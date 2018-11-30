@@ -39,5 +39,3 @@ response = requests.get(url)
 print(strip_tags(response.text))
 
 only_href(response.text)
-
-# I add this comment to test git pull
