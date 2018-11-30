@@ -10,9 +10,8 @@ class MyParser(HTMLParser):
         self.convert_charrefs = True
         self.fed = []
 
-    def handle_starttag(self, tag, attr):
-        if tag == 'a':
-            print("make some noooiseeeee!!!!!!!!")
+#    def handle_starttag(self, tag, attr):
+
 
     def handle_data(self, d):
         self.fed.append(d)
@@ -22,10 +21,9 @@ class MyParser(HTMLParser):
 
 
 def strip_tags(html):
-     parser = MyParser()
-     parser.feed(html)
-     return parser.get_data()
-
+    parser = MyParser()
+    parser.feed(html)
+    return parser.get_data()
 
 url = "https://www.pangdeals.com"
 
