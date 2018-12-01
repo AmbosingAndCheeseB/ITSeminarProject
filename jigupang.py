@@ -10,19 +10,17 @@ class MyParser(HTMLParser):
         self.convert_charrefs = True
         self.fed = []
 
-    def handle_starttag(self,tag,attr):
-        if tag == 'span':
-            return 1
+#    def handle_starttag(self,tag,attr):
+#        return tag
 
     def handle_data(self, data):
-        if self.handle_data():
-            self.fed.append(data)
+        self.fed.append(data)
         
     def get_data(self):
         return ''.join(self.fed)
 
 
-def only_data(html):
+def only_info(html):
     parser = MyParser()
     parser.feed(html)
     return parser.get_data()
@@ -32,5 +30,5 @@ url = "https://www.pangdeals.com"
 
 response = requests.get(url)
 
-info = only_data(response.text)
+info = only_info(response.text)
 print(info)
