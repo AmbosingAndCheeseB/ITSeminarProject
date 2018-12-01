@@ -27,4 +27,5 @@ url = "https://www.pangdeals.com"
 
 response = requests.get(url)
 
-print(no_tags(response.text))
+info = no_tags(response.text)
+print(info)
