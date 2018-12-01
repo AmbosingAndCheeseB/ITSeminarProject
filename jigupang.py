@@ -10,23 +10,21 @@ class MyParser(HTMLParser):
         self.convert_charrefs = True
         self.fed = []
 
-#    def handle_starttag(self, tag, attr):
-
-
-    def handle_data(self, d):
-        self.fed.append(d)
+    def handle_data(self, data):
+        self.fed.append(data)
         
     def get_data(self):
         return ''.join(self.fed)
 
 
-def strip_tags(html):
+def no_tags(html):
     parser = MyParser()
     parser.feed(html)
     return parser.get_data()
+
 
 url = "https://www.pangdeals.com"
 
 response = requests.get(url)
 
-print(strip_tags(response.text))
+print(no_tags(response.text))
