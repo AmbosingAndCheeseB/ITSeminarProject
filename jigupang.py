@@ -12,8 +12,15 @@ class MyParser(HTMLParser):
         self.convert_charrefs = True
         self.fed = []
 
-#    def handle_starttag(self, tag, attrs):
-#    def handle_endtag(self, tag):
+    def handle_starttag(self, tag, attrs):
+        self.fed.append('<')
+        self.fed.append(tag)
+        self.fed.append('>')
+
+    def handle_endtag(self, tag):
+        self.fed.append('</')
+        self.fed.append(tag)
+        self.fed.append('>')
 
     def handle_data(self, data):
         self.fed.append(data)
@@ -22,15 +29,12 @@ class MyParser(HTMLParser):
         return ''.join(self.fed)
 
 
-def only_info(html):
-    parser = MyParser()
-    parser.feed(html)
-    return parser.get_data()
-
+parser = MyParser()
 
 url = "https://www.pangdeals.com"
-
 response = requests.get(url)
 
-text = only_info(response.text)
+parser.feed(response.text)
+
+text = parser.get_data()
 print(text)
