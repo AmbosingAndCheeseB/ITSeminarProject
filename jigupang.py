@@ -8,13 +8,12 @@ class MyParser(HTMLParser):
 
     def __init__(self):
         self.reset()
+        self.strict = False
+        self.convert_charrefs = True
         self.fed = []
 
 #    def handle_starttag(self, tag, attrs):
-#        print("start tag: ", tag)
-
 #    def handle_endtag(self, tag):
-#        print("end tag: ", tag)
 
     def handle_data(self, data):
         self.fed.append(data)
@@ -33,5 +32,5 @@ url = "https://www.pangdeals.com"
 
 response = requests.get(url)
 
-info = only_info(response.text)
-print(info)
+text = only_info(response.text)
+print(text)
