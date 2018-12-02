@@ -2,6 +2,7 @@
 
 import requests
 from html.parser import HTMLParser
+import re
 
 
 #link parser
@@ -55,7 +56,7 @@ class subjectParser(HTMLParser):
 
     last_tag = ''
     last_attrs = ''
-    parser_sub = ''
+    parser_sub = []
 
     def __init__(self):
         self.reset()
@@ -73,7 +74,7 @@ class subjectParser(HTMLParser):
     def handle_data(self, data):
 
         if self.is_subject and self.last_tag == 'a':
-            self.parser_sub += data
+            self.parser_sub.append(data)
         if self.last_tag == 'a':
             self.is_subject = False
 
@@ -85,25 +86,72 @@ pass
 
 def subject_crawler(s, text):
     s.feed(text)
-    return s.parser_sub
+    subject = []
+    for item in s.parser_sub:
+        subject.append(re.findall('.+', item))
+
+    return subject
+pass
+
+
+#date parser
+class dateParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    parser_date = []
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_subject = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        for name, value in attrs:
+            self.last_attrs = value
+
+
+    def handle_data(self, data):
+
+        if self.last_tag == 'td' and self.last_attrs == 'td_date':
+            self.parser_date.append(data)
+
+
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+
+def date_crawler(d, text):
+    d.feed(text)
+    date = []
+    for item in d.parser_date:
+        date.append(re.findall('.+', item))
+
+    return date
 pass
 
 
 
 
+for i in range(1,10):
+    url = "http://www.coolenjoy.net/bbs/jirum/p"+str(i)+"?sca=PC%EA%B4%80%EB%A0%A8"
 
-i = 1
-url = "http://www.coolenjoy.net/bbs/jirum/p"+str(i)+"?sca=PC%EA%B4%80%EB%A0%A8"
+    html_result = requests.get(url)
+    link_parser = OurParser()
+    sub_parser = subjectParser()
+    date_parser = dateParser()
 
-html_result = requests.get(url)
-l = OurParser()
-s = subjectParser()
+    only_href(link_parser, html_result.text)
+    print(subject_crawler(sub_parser, html_result.text))
 
+    print(date_crawler(date_parser, html_result.text))
 
-only_href(l, html_result.text)
-print(subject_crawler(s, html_result.text))
+    link = need_href(link_parser)
 
-link = need_href(l)
+    for item in link:
+        print(item)
 
-for item in link:
-    print(item)
