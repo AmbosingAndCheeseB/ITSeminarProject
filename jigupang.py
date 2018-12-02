@@ -20,15 +20,14 @@ class InfoParser(HTMLParser):
         self.last_tag = tag
         for name, value in attrs:
             self.last_attrs = value
-
-    def handle_data(self, data):
         if self.last_attrs == 'mask end':
             self.is_end = True
 
+    def handle_data(self, data):
         if not self.is_end and self.last_tag == 'span' and self.last_attrs == 'txt':
             self.parser_data += data
 
-        if self.last_attrs != 'mask end':
+        if self.last_tag == 'span' and self.last_attrs == 'txt':
             self.is_end = False
 
     def close(self):
