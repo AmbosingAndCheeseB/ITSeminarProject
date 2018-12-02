@@ -39,6 +39,7 @@ class InfoParser(HTMLParser):
 class linkParser(HTMLParser):
 
     parser_link = []
+    is_content = False
 
     def __init__(self):
         self.reset()
@@ -46,7 +47,11 @@ class linkParser(HTMLParser):
         self.convert_charrefs = True
 
     def handle_starttag(self, tag, attrs):
-        if tag == "a":
+        for name, value in attrs:
+            if value == 'hotdeal_list':
+                self.is_content = True
+
+        if tag == "a" and self.is_content:
             for name, value in attrs:
                 if name == "href" and 'detail' in value:
                     self.parser_link.append(value)
@@ -80,9 +85,7 @@ def info_crawler(text):
 def link_crawler(text):
     parser = linkParser()
     parser.feed(text)
-    temp = parser.parser_link
-    data = list(set(temp))
-    data.sort(reverse=True)
+    data = parser.parser_link
     return data
 
 
