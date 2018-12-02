@@ -9,7 +9,7 @@ class InfoParser(HTMLParser):
     last_tag = ''
     last_attrs = ''
     is_end = False
-    parser_data = ''
+    parser_data = []
 
     def __init__(self):
         self.reset()
@@ -25,7 +25,9 @@ class InfoParser(HTMLParser):
 
     def handle_data(self, data):
         if not self.is_end and self.last_tag == 'span' and self.last_attrs == 'txt':
-            self.parser_data += data
+            if '\n' not in data:
+                temp = data.replace("\xa0", "")
+                self.parser_data.append(temp)
 
         if self.last_tag == 'span' and self.last_attrs == 'txt':
             self.is_end = False
@@ -35,6 +37,8 @@ class InfoParser(HTMLParser):
 
 
 class linkParser(HTMLParser):
+
+    link = []
 
     def __init__(self):
         self.reset()
@@ -67,11 +71,8 @@ class ImageParser(HTMLParser):
 def info_crawler(text):
     parser = InfoParser()
     parser.feed(text)
-    temp = parser.parser_data
-    temp2 = temp.replace("\t", "")
-    temp3 = temp2.split("\n")
-    temp4 = [x for x in temp3 if x]
-    return temp4
+    data = parser.parser_data
+    return data
 
 
 url = "https://www.pangdeals.com"
