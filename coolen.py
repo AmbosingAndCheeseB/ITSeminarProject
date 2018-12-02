@@ -3,6 +3,8 @@
 import requests
 from html.parser import HTMLParser
 
+
+#link parser
 class OurParser(HTMLParser):
 
     def __init__(self):
@@ -36,8 +38,19 @@ def need_href(s):
     for item in temp:
         if '/jirum/' in item and '?sca=PC' in item:
             new_link.append(item)
-    return new_link
+    real_link = []
 
+    # boare num = 25
+    i = 1
+    for item in new_link:
+        if i <= 25:
+            real_link.append(item)
+        i = i+1
+    return real_link
+
+
+
+# text parser
 
 url = "http://www.coolenjoy.net/bbs/jirum?sca=PC%EA%B4%80%EB%A0%A8"
 
@@ -48,4 +61,7 @@ only_href(s, html_result.text)
 
 print(s.get_link())
 
-print(need_href(s))
+link = need_href(s)
+
+for item in link:
+    print(item)
