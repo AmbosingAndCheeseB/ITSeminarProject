@@ -34,12 +34,6 @@ class InfoParser(HTMLParser):
         HTMLParser.close(self)
 
 
-def info_crawler(text):
-    parser = InfoParser()
-    parser.feed(text)
-    return parser.parser_data
-
-
 class linkParser(HTMLParser):
 
     def __init__(self):
@@ -68,6 +62,16 @@ class ImageParser(HTMLParser):
 
     def close(self):
         HTMLParser.close(self)
+
+
+def info_crawler(text):
+    parser = InfoParser()
+    parser.feed(text)
+    temp = parser.parser_data
+    temp2 = temp.replace("\t", "")
+    temp3 = temp2.split("\n")
+    temp4 = [x for x in temp3 if x]
+    return temp4
 
 
 url = "https://www.pangdeals.com"
