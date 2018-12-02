@@ -50,18 +50,60 @@ def need_href(s):
 
 
 
-# text parser
+# subject parser
+class subjectParser(HTMLParser):
 
-url = "http://www.coolenjoy.net/bbs/jirum?sca=PC%EA%B4%80%EB%A0%A8"
+    last_tag = ''
+    last_attrs = ''
+    parser_sub = ''
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_subject = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        for name, value in attrs:
+            self.last_attrs = value
+            if value == 'td_subject':
+                self.is_subject = True
+
+    def handle_data(self, data):
+
+        if self.is_subject and self.last_tag == 'a':
+            self.parser_sub += data
+        if self.last_tag == 'a':
+            self.is_subject = False
+
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+
+def subject_crawler(s, text):
+    s.feed(text)
+    return s.parser_sub
+pass
+
+
+
+
+
+i = 1
+url = "http://www.coolenjoy.net/bbs/jirum/p"+str(i)+"?sca=PC%EA%B4%80%EB%A0%A8"
 
 html_result = requests.get(url)
-s = OurParser()
+l = OurParser()
+s = subjectParser()
 
-only_href(s, html_result.text)
 
-print(s.get_link())
+only_href(l, html_result.text)
+print(subject_crawler(s, html_result.text))
 
-link = need_href(s)
+link = need_href(l)
 
 for item in link:
     print(item)
