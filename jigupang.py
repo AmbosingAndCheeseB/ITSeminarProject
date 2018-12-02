@@ -80,7 +80,9 @@ def info_crawler(text):
 def link_crawler(text):
     parser = linkParser()
     parser.feed(text)
-    data = parser.parser_link
+    temp = parser.parser_link
+    data = list(set(temp))
+    data.sort(reverse=True)
     return data
 
 
