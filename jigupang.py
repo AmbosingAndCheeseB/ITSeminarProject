@@ -1,33 +1,29 @@
 #!/usr/bin/python3
 
-import io
 import requests
 from html.parser import HTMLParser
 
 
 class MyParser(HTMLParser):
 
+    last_tag = ''
+    text = ''
+
     def __init__(self):
         self.reset()
         self.strict = False
         self.convert_charrefs = True
-        self.fed = []
 
     def handle_starttag(self, tag, attrs):
-        self.fed.append('<')
-        self.fed.append(tag)
-        self.fed.append('>')
-
-    def handle_endtag(self, tag):
-        self.fed.append('</')
-        self.fed.append(tag)
-        self.fed.append('>')
+        self.last_tag = tag
 
     def handle_data(self, data):
-        self.fed.append(data)
+        if self.last_tag == 'span':
+            self.text += data
+            return self.text
 
-    def get_data(self):
-        return ''.join(self.fed)
+    def close(self):
+        HTMLParser.close(self)
 
 
 parser = MyParser()
@@ -36,12 +32,4 @@ url = "https://www.pangdeals.com"
 response = requests.get(url)
 
 parser.feed(response.text)
-
-temp = parser.get_data()
-text = io.StringIO(temp)
-
-while True:
-    line = text.readline()
-    if not line:
-        break
-    print(line)
+print(parser.text)
