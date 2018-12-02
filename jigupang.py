@@ -40,6 +40,36 @@ def info_crawler(text):
     return parser.parser_data
 
 
+class linkParser(HTMLParser):
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+
+#    def handle_starttag(self, tag, attrs):
+
+#    def handle_data(self, data):
+
+    def close(self):
+        HTMLParser.close(self)
+
+
+class ImageParser(HTMLParser):
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+
+#    def handle_starttag(self, tag, attrs):
+
+#    def handle_data(self, data):
+
+    def close(self):
+        HTMLParser.close(self)
+
+
 url = "https://www.pangdeals.com"
 response = requests.get(url)
 
