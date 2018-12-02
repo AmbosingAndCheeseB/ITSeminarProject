@@ -60,21 +60,6 @@ class linkParser(HTMLParser):
         HTMLParser.close(self)
 
 
-class ImageParser(HTMLParser):
-
-    def __init__(self):
-        self.reset()
-        self.strict = False
-        self.convert_charrefs = True
-
-#    def handle_starttag(self, tag, attrs):
-
-#    def handle_data(self, data):
-
-    def close(self):
-        HTMLParser.close(self)
-
-
 def info_crawler(text):
     parser = InfoParser()
     parser.feed(text)
