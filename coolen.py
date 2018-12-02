@@ -3,7 +3,11 @@
 import requests
 from html.parser import HTMLParser
 import re
+import pymysql
+from datetime import date
 
+connect = pymysql.connect(host = '121.186.13.37',port = 3306, user = 'jiwon', password = 'Tjdduswldnjs12!', db = 'ITProj', charset='utf8')
+curs = connect.cursor()
 
 #link parser
 class OurParser(HTMLParser):
@@ -147,11 +151,24 @@ for i in range(1,10):
 
     only_href(link_parser, html_result.text)
     print(subject_crawler(sub_parser, html_result.text))
-
     print(date_crawler(date_parser, html_result.text))
 
+
+    subject = subject_crawler(sub_parser, html_result.text)
+    date = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
     for item in link:
         print(item)
 
+    for j in range(0, 25):
+        index = j*i
+        if ":" in date.parser_date[index][0] and subject.parser_sub[index][1]:
+            sql = "insert into coolen_board values(null, " + subject.parser_sub[index][1] + " , " + link[j] + ", " + date.today() + ")"
+
+            curs.execute(sql)
+
+
+
+
+connect.close()
