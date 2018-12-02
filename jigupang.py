@@ -61,7 +61,6 @@ class linkParser(HTMLParser):
             if value == 'mask end':
                 self.parser_link.pop()
 
-
     def close(self):
         HTMLParser.close(self)
 
