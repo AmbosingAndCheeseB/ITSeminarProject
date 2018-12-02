@@ -1,47 +1,38 @@
 #!/usr/bin/python3
 
-import io
 import requests
 from html.parser import HTMLParser
 
 
-class MyParser(HTMLParser):
+class InfoParser(HTMLParser):
+
+    last_tag = ''
+    parser_data = ''
 
     def __init__(self):
         self.reset()
         self.strict = False
         self.convert_charrefs = True
-        self.fed = []
 
     def handle_starttag(self, tag, attrs):
-        self.fed.append('<')
-        self.fed.append(tag)
-        self.fed.append('>')
-
-    def handle_endtag(self, tag):
-        self.fed.append('</')
-        self.fed.append(tag)
-        self.fed.append('>')
+        self.last_tag = tag
 
     def handle_data(self, data):
-        self.fed.append(data)
+        if self.last_tag == 'span':
+            self.parser_data += data
 
-    def get_data(self):
-        return ''.join(self.fed)
+    def close(self):
+        HTMLParser.close(self)
 
 
-parser = MyParser()
+def info_crawler(text):
+    parser = InfoParser()
+    parser.feed(text)
+    return parser.parser_data
+
 
 url = "https://www.pangdeals.com"
 response = requests.get(url)
 
-parser.feed(response.text)
-
-temp = parser.get_data()
-text = io.StringIO(temp)
-
-while True:
-    line = text.readline()
-    if not line:
-        break
-    print(line)
+info = info_crawler(response.text)
+print(info)
