@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import io
 import requests
 from html.parser import HTMLParser
 
@@ -36,5 +37,11 @@ response = requests.get(url)
 
 parser.feed(response.text)
 
-text = parser.get_data()
-print(text)
+temp = parser.get_data()
+text = io.StringIO(temp)
+
+while True:
+    line = text.readline()
+    if not line:
+        break
+    print(line)
