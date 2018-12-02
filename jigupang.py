@@ -4,10 +4,10 @@ import requests
 from html.parser import HTMLParser
 
 
-class MyParser(HTMLParser):
+class InfoParser(HTMLParser):
 
     last_tag = ''
-    text = ''
+    parser_data = ''
 
     def __init__(self):
         self.reset()
@@ -19,17 +19,20 @@ class MyParser(HTMLParser):
 
     def handle_data(self, data):
         if self.last_tag == 'span':
-            self.text += data
-            return self.text
+            self.parser_data += data
 
     def close(self):
         HTMLParser.close(self)
 
 
-parser = MyParser()
+def info_crawler(text):
+    parser = InfoParser()
+    parser.feed(text)
+    return parser.parser_data
+
 
 url = "https://www.pangdeals.com"
 response = requests.get(url)
 
-parser.feed(response.text)
-print(parser.text)
+info = info_crawler(response.text)
+print(info)
