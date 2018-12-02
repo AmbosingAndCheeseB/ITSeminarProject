@@ -54,7 +54,8 @@ class linkParser(HTMLParser):
         if tag == "a" and self.is_content:
             for name, value in attrs:
                 if name == "href" and 'detail' in value:
-                    self.parser_link.append(value)
+                    data = 'https://www.pangdeals.com' + value
+                    self.parser_link.append(data)
 
         for name, value in attrs:
             if value == 'mask end':
