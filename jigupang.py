@@ -56,6 +56,11 @@ class linkParser(HTMLParser):
                 if name == "href" and 'detail' in value:
                     self.parser_link.append(value)
 
+        for name, value in attrs:
+            if value == 'mask end':
+                self.parser_link.pop()
+
+
     def close(self):
         HTMLParser.close(self)
 
