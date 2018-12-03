@@ -42,6 +42,8 @@ class InfoParser(HTMLParser):
 
 class linkParser(HTMLParser):
 
+    crawling_ok = False
+    last_value = ''
     parser_link = []
 
     def __init__(self):
@@ -49,7 +51,28 @@ class linkParser(HTMLParser):
         self.strict = False
         self.convert_charrefs = True
 
-#    def handle_starttag(self, tag, attrs):
+    def handle_starttag(self, tag, attrs):
+        if tag == 'tr':
+            for name, value in attrs:
+                if name == 'class' and value == '':
+                    self.crawling_ok = True
+
+        if tag == "a" and self.crawling_ok:
+            for name, value in attrs:
+                if name == "href" and self.last_value == 'td_subject':
+                    if value is not '#':
+                        self.parser_link.append(value)
+
+        for name, value in attrs:
+            self.last_value = value
+
+    def handle_data(self, data):
+        if '[종료]' in data:
+            self.parser_link.pop()
+
+    def handle_endtag(self, tag):
+        if tag == 'tbody':
+            self.crawling_ok = False
 
     def close(self):
         HTMLParser.close(self)
