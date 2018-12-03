@@ -6,6 +6,9 @@ from html.parser import HTMLParser
 
 class InfoParser(HTMLParser):
 
+    this_tag = ''
+    last_tag = ''
+    crawling_ok = False
     parser_data = []
 
     def __init__(self):
@@ -13,9 +16,25 @@ class InfoParser(HTMLParser):
         self.strict = False
         self.convert_charrefs = True
 
-#    def handle_starttag(self, tag, attrs):
+    def handle_starttag(self, tag, attrs):
+        if tag == 'tr':
+            for name, value in attrs:
+                if name == 'class' and value == '':
+                    self.crawling_ok = True
 
-#    def handle_data(self, data):
+        self.this_tag = tag
+
+    def handle_data(self, data):
+        if self.crawling_ok:
+            if self.this_tag == 'font' and self.last_tag == 'a':
+                if '[종료]' not in data:
+                    self.parser_data.append(data)
+
+        self.last_tag = self.this_tag
+
+    def handle_endtag(self, tag):
+        if tag == 'tbody':
+            self.crawling_ok = False
 
     def close(self):
         HTMLParser.close(self)
