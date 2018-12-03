@@ -92,7 +92,7 @@ def link_crawler(text):
     return data
 
 
-url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal#"
+url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal"
 response = requests.get(url)
 
 info = info_crawler(response.text)
