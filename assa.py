@@ -9,6 +9,7 @@ class InfoParser(HTMLParser):
     this_tag = ''
     last_tag = ''
     crawling_ok = False
+    level_ok = True
     parser_data = []
 
     def __init__(self):
@@ -25,10 +26,16 @@ class InfoParser(HTMLParser):
         self.this_tag = tag
 
     def handle_data(self, data):
-        if self.crawling_ok:
+        if self.this_tag == 'span' and data == 'Lv2.':
+            self.level_ok = False
+
+        if self.crawling_ok and self.level_ok:
             if self.this_tag == 'font' and self.last_tag == 'a':
                 if '[종료]' not in data:
                     self.parser_data.append(data)
+
+        if self.this_tag == 'font' and self.last_tag == 'a':
+            self.level_ok = True
 
         self.last_tag = self.this_tag
 
@@ -92,10 +99,11 @@ def link_crawler(text):
     return data
 
 
-url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal"
-response = requests.get(url)
+for i in range(1, 10):
+    url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal&page="+str(i)
+    response = requests.get(url)
+    info = info_crawler(response.text)
+    link = link_crawler(response.text)
 
-info = info_crawler(response.text)
-link = link_crawler(response.text)
 print(info)
 print(link)
