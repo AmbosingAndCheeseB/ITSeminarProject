@@ -6,8 +6,9 @@ import re
 import pymysql
 from datetime import date
 
-connect = pymysql.connect(host = '121.186.13.37',port = 3306, user = 'jiwon', password = 'Tjdduswldnjs12!', db = 'ITProj', charset='utf8')
-curs = connect.cursor()
+#connect = pymysql.connect(host = '121.186.13.37',port = 3306, user = 'root', password = 'Tjdduswldnjs12!', db = 'ITProj', charset='utf8')
+
+#curs = connect.cursor()
 
 #link parser
 class OurParser(HTMLParser):
@@ -91,8 +92,10 @@ pass
 def subject_crawler(s, text):
     s.feed(text)
     subject = []
+
     for item in s.parser_sub:
         subject.append(re.findall('.+', item))
+
 
     return subject
 pass
@@ -150,25 +153,30 @@ for i in range(1,10):
     date_parser = dateParser()
 
     only_href(link_parser, html_result.text)
-    print(subject_crawler(sub_parser, html_result.text))
-    print(date_crawler(date_parser, html_result.text))
+
 
 
     subject = subject_crawler(sub_parser, html_result.text)
-    date = date_crawler(date_parser, html_result.text)
+    date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
-    for item in link:
-        print(item)
 
     for j in range(0, 25):
         index = j*i
-        if ":" in date.parser_date[index][0] and subject.parser_sub[index][1]:
-            sql = "insert into coolen_board values(null, " + subject.parser_sub[index][1] + " , " + link[j] + ", " + date.today() + ")"
+        temp = str(subject[index][1])
+        if ":" in date_list[index][0] and temp.replace(" ", ""):
+            temp = str(subject[index][1])
+            temp = temp.lstrip()
+            print(temp.rstrip() + " " + link[j] + " " + str(date.today()))
 
-            curs.execute(sql)
+#    for j in range(0, 25):
+ #       index = j*i
+  #      if ":" in date.parser_date[index][0] and subject.parser_sub[index][1]:
+  #          sql = "insert into coolen_board values(null, " + subject.parser_sub[index][1] + " , " + link[j] + ", " + date.today() + ")"
+#
+ #           curs.execute(sql)
 
 
 
 
-connect.close()
+#connect.close()
