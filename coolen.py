@@ -173,7 +173,7 @@ for i in range(1,10):
             break
 
         temp = str(subject[index][1])
-        if "-" in date_list[index*2][0] and temp.replace(" ", ""):
+        if ":" in date_list[index*2][0] and temp.replace(" ", ""):
             print(index)
 
             temp = str(subject[index][1])
