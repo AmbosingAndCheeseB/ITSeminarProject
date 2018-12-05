@@ -90,8 +90,10 @@ def subject_crawler(s, text):
     s.feed(text)
     subject = []
 
+
     for item in s.parser_sub:
         subject.append(re.findall('.+', item))
+
 
 
     return subject
@@ -132,8 +134,11 @@ pass
 def date_crawler(d, text):
     d.feed(text)
     date = []
+
     for item in d.parser_date:
         date.append(re.findall('.+', item))
+
+
 
     return date
 pass
@@ -144,7 +149,7 @@ connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', passwor
 curs = connect.cursor()
 
 
-
+index = 0
 for i in range(1,10):
     url = "http://www.coolenjoy.net/bbs/jirum/p"+str(i)+"?sca=PC%EA%B4%80%EB%A0%A8"
 
@@ -161,12 +166,16 @@ for i in range(1,10):
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
-    index = 0
+
     for j in range(0, 25):
 
-        index = j + index
+        if(index == 225):
+            break
+
         temp = str(subject[index][1])
-        if ":" in date_list[index][0] and temp.replace(" ", ""):
+        if "-" in date_list[index*2][0] and temp.replace(" ", ""):
+            print(index)
+
             temp = str(subject[index][1])
             temp = temp.lstrip()
             sql1 = """insert into coolen_board(board_id, c_title, c_link, c_date) 
@@ -174,8 +183,8 @@ for i in range(1,10):
             print(sql1)
             curs.execute(sql1, (temp.rstrip(), str(link[j]), str(date.today())))
 
-            connect.commit()
 
+        index = 1 + index
 
-
+connect.commit()
 connect.close()
