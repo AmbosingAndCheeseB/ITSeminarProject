@@ -6,9 +6,6 @@ import re
 import pymysql
 from datetime import date
 
-connect = pymysql.connect(host = '106.10.37.154',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
-
-curs = connect.cursor()
 
 #link parser
 class OurParser(HTMLParser):
@@ -142,6 +139,10 @@ def date_crawler(d, text):
 pass
 
 
+connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
+
+curs = connect.cursor()
+
 
 
 for i in range(1,10):
@@ -160,22 +161,20 @@ for i in range(1,10):
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
-
+    index = 0
     for j in range(0, 25):
-        index = j*i
+
+        index = j + index
         temp = str(subject[index][1])
         if ":" in date_list[index][0] and temp.replace(" ", ""):
             temp = str(subject[index][1])
             temp = temp.lstrip()
-            print(temp.rstrip() + " " + link[j] + " " + str(date.today()))
+            sql1 = """insert into coolen_board(board_id, c_title, c_link, c_date) 
+                          values(null,%s, %s, %s)"""
+            print(sql1)
+            curs.execute(sql1, (temp.rstrip(), str(link[j]), str(date.today())))
 
-#    for j in range(0, 25):
- #       index = j*i
-  #      if ":" in date.parser_date[index][0] and subject.parser_sub[index][1]:
-  #          sql = "insert into coolen_board values(null, " + subject.parser_sub[index][1] + " , " + link[j] + ", " + date.today() + ")"
-#
- #           curs.execute(sql)
-
+            connect.commit()
 
 
 
