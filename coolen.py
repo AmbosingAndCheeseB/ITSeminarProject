@@ -6,9 +6,9 @@ import re
 import pymysql
 from datetime import date
 
-#connect = pymysql.connect(host = '121.186.13.37',port = 3306, user = 'root', password = 'Tjdduswldnjs12!', db = 'ITProj', charset='utf8')
+connect = pymysql.connect(host = '106.10.37.154',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
-#curs = connect.cursor()
+curs = connect.cursor()
 
 #link parser
 class OurParser(HTMLParser):
@@ -179,4 +179,4 @@ for i in range(1,10):
 
 
 
-#connect.close()
+connect.close()
