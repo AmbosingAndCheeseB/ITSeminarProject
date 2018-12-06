@@ -160,8 +160,6 @@ for i in range(1,10):
 
     only_href(link_parser, html_result.text)
 
-
-
     subject = subject_crawler(sub_parser, html_result.text)
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
