@@ -1,12 +1,4 @@
-// Color Variables
-$indigo: #5C6BC0; 
-$blue: #29B6F6;
-$black: #717171;
-
-$body-font-family: "Lato";
-$header-font-family: "Montserrat";
-
-// Basic Styles for Demo
+/* Basic Styles for Demo */
 *,*:after,*:before {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
@@ -21,7 +13,7 @@ html {
 
 body {
 	font-size: 1em;
-	font-family: $body-font-family;
+	font-family: "Lato";
 	font-weight: 400;
 	line-height: 1.5;
 
@@ -37,7 +29,7 @@ img {
 }
 
 a {
-	color: $blue;
+	color: #29B6F6;
 	text-decoration: none;
 
 	&:hover {
@@ -45,7 +37,7 @@ a {
 	}
 }
 
-// Basics demo styles
+/* Basics demo styles */
 .site__wrapper {
 	max-width: 1000px;
 	margin-left: auto;
@@ -55,17 +47,7 @@ a {
 	padding-bottom: 1.5em;
 }
 
-.site__info {
-	clear: both;
-	display: block;
-	font-variant: small-caps;
-	letter-spacing: 2px;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
-	text-align: center;
-}
-
-// Basic Grid for Demo;
+/* Basic Grid for Demo; */
 .grid {
 	float: none;
 	width: 100%;
@@ -79,7 +61,7 @@ a {
 	}
 }
 
-// Card Article
+/* Card Article */
 .card {
 	
 }
@@ -116,7 +98,7 @@ a {
 .card__title {
 	color: white;
 	display: inline-block;
-	font-family: $header-font-family;
+	font-family: "Montserrat";
 	font-size: 1.5em;
 	font-weight: 700;
 	line-height: 1.2;
@@ -147,12 +129,12 @@ a {
 }
 
 .card__overlay--indigo {
-	background-image: linear-gradient(to bottom, rgba($indigo, 0.1), rgba($indigo, 0.8));
+	background-image: linear-gradient(to bottom, rgba(#5C6BC0, 0.1), rgba(#5C6BC0, 0.8));
 	z-index: 2;
 }
 
 .card__overlay--blue {
-	background-image: linear-gradient(to bottom, rgba($blue, 0.1), rgba($blue, 0.8));
+	background-image: linear-gradient(to bottom, rgba(#29B6F6, 0.1), rgba(#29B6F6, 0.8));
 	z-index: 2;
 }
 
@@ -161,38 +143,4 @@ a {
 	bottom: 0;
 	padding: 1.5em;
 	z-index: 3;
-}
-
-.card__meta {
-	margin: 0;
-	margin-right: -1em;
-	margin-bottom: 0.75em;
-
-	&.card__meta--last {
-		margin-bottom: 0;
-	}
-	 
-	li {
-		color: #f8f8f8;
-		display: inline;
-		list-style-type: none;
-		margin-bottom: 0;
-		padding-right: 1em;
-
-		font-size: 0.85em;
-		font-variant: small-caps;
-		letter-spacing: 1px;
-
-		&:not(:last-child):after {
-			content: "\25cf";
-			font-style: normal;
-			position: relative;
-			color: rgba(white, 0.25);
-			right: -0.6em;
-		}
-
-		> a {
-			color: #f8f8f8;
-		}
-	}
 }
