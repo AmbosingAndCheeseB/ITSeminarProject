@@ -35,6 +35,39 @@ class InfoParser(HTMLParser):
     def close(self):
         HTMLParser.close(self)
 
+
+class TimeParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    is_end = False
+    parser_time = []
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        for name, value in attrs:
+            self.last_attrs = value
+
+        if self.last_attrs == 'mask end':
+            self.is_end = True
+
+    def handle_data(self, data):
+        if not self.is_end and self.last_tag == 'span' and self.last_attrs == 'time':
+            if '\n' not in data:
+                self.parser_time.append(data)
+
+        if self.last_tag == 'span' and self.last_attrs == 'hit':
+            self.is_end = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+
 class linkParser(HTMLParser):
 
     parser_link = []
@@ -71,6 +104,13 @@ def info_crawler(text):
     return data
 
 
+def time_crawler(text):
+    parser = TimeParser()
+    parser.feed(text)
+    data = parser.parser_time
+    return data
+
+
 def link_crawler(text):
     parser = linkParser()
     parser.feed(text)
@@ -82,6 +122,27 @@ url = "https://www.pangdeals.com"
 response = requests.get(url)
 
 info = info_crawler(response.text)
+time = time_crawler(response.text)
 link = link_crawler(response.text)
+
 print(info)
+print(time)
 print(link)
+
+count = 0
+for i in info:
+    count += 1
+
+print(count)
+
+count = 0
+for j in time:
+    count += 1
+
+print(count)
+
+count = 0
+for k in link:
+    count += 1
+
+print(count)
