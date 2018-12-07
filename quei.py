@@ -92,23 +92,25 @@ class subjectParser(HTMLParser):
 
         for name, value in attrs:
             self.last_attrs = value
-            if value == 'item-subject' and self.crawling_ok:
+            if value == 'wr-subject' and self.crawling_ok:
                 self.is_subject = True
 
     def handle_data(self, data):
 
-        if self.is_subject and self.last_tag == 'a' and self.this_tag == 'span':
+        if self.is_subject and self.last_tag == 'span':
             self.parser_sub.append(data)
 
-        if self.last_tag == 'a' and this_tag == 'span':
-            self.is_subject = False
+
 
 
 
 
     def handle_endtag(self, tag):
+        self.last_tag = tag
         if tag == 'li':
             self.crawling_ok = False
+        if self.last_tag == 'a':
+            self.is_subject = False
 
     def close(self):
         HTMLParser.close(self)
@@ -119,10 +121,15 @@ pass
 def subject_crawler(s, text):
     s.feed(text)
     subject = []
-
-
+    print(s.parser_sub)
+    print(len(s.parser_sub))
     for item in s.parser_sub:
-        subject.append(re.findall('.+', item))
+        temp = str(item.strip())
+        if temp:
+            subject.append(temp)
+
+
+
 
 
 
@@ -143,4 +150,7 @@ link = need_href(link_parser)
 subject = subject_crawler(subject_parser, html_result.text)
 
 print(link)
+
 print(subject)
+print(len(link))
+print(len(subject))
