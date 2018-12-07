@@ -136,21 +136,43 @@ def subject_crawler(s, text):
     return subject
 pass
 
+connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
-url = "https://quasarzone.co.kr/bbs/board.php?bo_table=qb_saleinfo&sca=%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4&page=1"
+curs = connect.cursor()
 
-html_result = requests.get(url)
+index = 0
+for i in range(1, 10):
+    url = "https://quasarzone.co.kr/bbs/board.php?bo_table=qb_saleinfo&sca=%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4&page="+str(i)
 
-link_parser = OurParser()
-subject_parser = subjectParser()
+    html_result = requests.get(url)
 
-only_href(link_parser, html_result.text)
+    link_parser = OurParser()
+    subject_parser = subjectParser()
 
-link = need_href(link_parser)
-subject = subject_crawler(subject_parser, html_result.text)
+    only_href(link_parser, html_result.text)
 
-print(link)
+    link = need_href(link_parser)
+    subject = subject_crawler(subject_parser, html_result.text)
 
-print(subject)
-print(len(link))
-print(len(subject))
+    for j in range(0, 30):
+
+        if (index == 270):
+            break
+
+        temp = str(subject[index][1])
+        if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
+            sql1 = """insert into quei_board(board_id, c_title, c_link, c_date) 
+                             values(null,%s, %s, %s)"""
+            print(sql1)
+            curs.execute(sql1, (subject[index], str(link[j]), str(date.today())))
+
+        index = 1 + index
+
+    print(link)
+
+    print(subject)
+    print(len(link))
+    print(len(subject))
+
+connect.commit()
+connect.close()
