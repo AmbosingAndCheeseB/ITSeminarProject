@@ -137,7 +137,9 @@ def date_crawler(d, text):
     date = []
 
     for item in d.parser_date:
-        date.append(re.findall('.+', item))
+        temp = str(item.strip())
+        if temp:
+            date.append(temp)
 
 
 
@@ -149,6 +151,11 @@ connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', passwor
 
 curs = connect.cursor()
 
+sql1 = """Truncate table coolen_board"""
+
+curs.execute(sql1)
+
+connect.commit()
 
 index = 0
 for i in range(1,10):
@@ -165,22 +172,22 @@ for i in range(1,10):
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
-
+    print(date_list, end='\n')
+    print(len(date_list))
     for j in range(0, 25):
 
         if(index == 225):
             break
 
         temp = str(subject[index][1])
-        if ":" in date_list[index*2][0] and temp.replace(" ", ""):
-            print(index)
+        if temp.replace(" ", ""):
+
 
             temp = str(subject[index][1])
-            temp = temp.lstrip()
             sql1 = """insert into coolen_board(board_num, c_title, c_link, c_date) 
                           values(null,%s, %s, %s)"""
-            print(sql1)
-            curs.execute(sql1, (temp.rstrip(), str(link[j]), str(date.today())))
+
+            curs.execute(sql1, (temp.strip(), str(link[j]), str(date_list[index])))
 
 
         index = 1 + index

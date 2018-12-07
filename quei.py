@@ -121,8 +121,7 @@ pass
 def subject_crawler(s, text):
     s.feed(text)
     subject = []
-    print(s.parser_sub)
-    print(len(s.parser_sub))
+
     for item in s.parser_sub:
         temp = str(item.strip())
         if temp:
@@ -130,15 +129,72 @@ def subject_crawler(s, text):
 
 
 
-
-
-
     return subject
 pass
+
+
+#date parser
+class dateParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    parser_date = []
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_subject = False
+        self.crawling_ok = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+
+        if tag == 'li':
+            for name, value in attrs:
+                if name == 'class' and 'bg-black' not in value:
+                    self.crawling_ok = True
+        else:
+            for name, value in attrs:
+                self.last_attrs = value
+
+    def handle_data(self, data):
+        if 'wr-date' in self.last_attrs:
+            self.parser_date.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'li':
+            self.crawling_ok = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+
+def date_crawler(d, text):
+    d.feed(text)
+    date = []
+
+    for item in d.parser_date:
+        temp = str(item.strip())
+        if temp:
+            date.append(temp)
+
+    print(date)
+
+    return date
+pass
+
 
 connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
 curs = connect.cursor()
+
+sql1 = """Truncate table quei_board"""
+
+curs.execute(sql1)
+
+connect.commit()
 
 index = 0
 for i in range(1, 10):
@@ -148,25 +204,28 @@ for i in range(1, 10):
 
     link_parser = OurParser()
     subject_parser = subjectParser()
+    date_parser = dateParser()
 
     only_href(link_parser, html_result.text)
 
     link = need_href(link_parser)
     subject = subject_crawler(subject_parser, html_result.text)
+    date1 = date_crawler(date_parser, html_result.text)
 
     for j in range(0, 30):
 
-        if (index == 270):
+        if (index == 269):
             break
 
-        temp = str(subject[index][1])
+
         if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
             sql1 = """insert into quei_board(board_num, q_title, q_link, q_date) 
                              values(null,%s, %s, %s)"""
-            print(sql1)
-            curs.execute(sql1, (subject[index], str(link[j]), str(date.today())))
+
+            curs.execute(sql1, (str(subject[index]), str(link[j]), str(date.today())))
 
         index = 1 + index
 
 connect.commit()
+
 connect.close()
