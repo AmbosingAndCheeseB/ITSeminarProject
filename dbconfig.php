@@ -6,7 +6,7 @@
 
 	header('Content-Type: text/html; charset=utf-8');
 	
-	$db = new mysqli('106.10.37.140', 'root', 'Tjdduswldnjs12', 'ITProj');
+	$db = new mysqli('localhost', 'root', 'Tjdduswldnjs12', 'ITProj');
 
 	if($db->connect_error) {
 
