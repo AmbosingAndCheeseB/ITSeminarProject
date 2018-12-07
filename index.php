@@ -1,3 +1,7 @@
+<?php
+include "/dbconfig.php";
+?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -6,7 +10,6 @@
 
 
 <div class="grid">
-	
 			<div class="grid-item">
 				<img src="jigulogo.jpg">
 				<p>
