@@ -35,7 +35,6 @@ class InfoParser(HTMLParser):
     def close(self):
         HTMLParser.close(self)
 
-
 class linkParser(HTMLParser):
 
     parser_link = []

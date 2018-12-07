@@ -180,8 +180,7 @@ def date_crawler(d, text):
         if temp:
             date.append(temp)
 
-    print(date)
-    print(len(date))
+
 
     return date
 pass
