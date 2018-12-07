@@ -35,6 +35,7 @@ def only_href(s, html):
     except:
         return
 
+
 def need_href(s):
     temp = s.get_link()
     new_link = []
