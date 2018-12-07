@@ -177,7 +177,7 @@ for i in range(1,10):
 
             temp = str(subject[index][1])
             temp = temp.lstrip()
-            sql1 = """insert into coolen_board(board_id, c_title, c_link, c_date) 
+            sql1 = """insert into coolen_board(board_num, c_title, c_link, c_date) 
                           values(null,%s, %s, %s)"""
             print(sql1)
             curs.execute(sql1, (temp.rstrip(), str(link[j]), str(date.today())))

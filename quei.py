@@ -161,18 +161,12 @@ for i in range(1, 10):
 
         temp = str(subject[index][1])
         if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
-            sql1 = """insert into quei_board(board_id, c_title, c_link, c_date) 
+            sql1 = """insert into quei_board(board_num, q_title, q_link, q_date) 
                              values(null,%s, %s, %s)"""
             print(sql1)
             curs.execute(sql1, (subject[index], str(link[j]), str(date.today())))
 
         index = 1 + index
-
-    print(link)
-
-    print(subject)
-    print(len(link))
-    print(len(subject))
 
 connect.commit()
 connect.close()
