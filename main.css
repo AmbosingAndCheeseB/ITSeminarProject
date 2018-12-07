@@ -1,5 +1,5 @@
 .grid {
-	background:silver;
+	background:#B8EAFF;
 	-webkit-column-count:1;
 	-webkit-column-gap:10px;
 	-webkit-column-fill:auto;
@@ -13,22 +13,13 @@
 
 .grid-item {
 	display:inline-block;
-	background:#F8F8F8;
-	margin:0 0 10px;
-	padding:15px;
-	padding-bottom:5px;
+	background:none;
+	margin:0px;
+	padding:0px;
+	padding-bottom:0px;
 	-webkit-column-break-inside:avoid;
 	-moz-column-break-inside:avoid;
 	column-break-inside:avoid;
-}
-
-hr {
-	display:block;
-	height:1px;
-	border:0;
-	border-top:1px solid #ccc;
-	margin:.5em 10px;
-	padding:0;
 }
 
 img {
