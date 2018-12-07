@@ -73,7 +73,6 @@ class subjectParser(HTMLParser):
 
     last_tag = ''
     last_attrs = ''
-    this_tag = ''
     parser_sub = []
 
     def __init__(self):
@@ -85,7 +84,7 @@ class subjectParser(HTMLParser):
 
 
     def handle_starttag(self, tag, attrs):
-        self.this_tag = tag
+        self.last_tag = tag
         if tag == 'li':
             for name, value in attrs:
                 if name == 'class' and 'bg-black' not in value:
@@ -98,11 +97,12 @@ class subjectParser(HTMLParser):
 
     def handle_data(self, data):
 
-        if self.is_subject and self.last_tag == 'span':
+        if self.is_subject and self.last_tag == 'a' and self.this_tag == 'span':
             self.parser_sub.append(data)
 
-        if self.last_tag == 'a':
+        if self.last_tag == 'a' and this_tag == 'span':
             self.is_subject = False
+
 
 
 
