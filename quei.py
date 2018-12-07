@@ -159,7 +159,7 @@ class dateParser(HTMLParser):
                 self.last_attrs = value
 
     def handle_data(self, data):
-        if 'wr-date' in self.last_attrs:
+        if self.lasttag == 'div' and self.last_attrs == 'wr-date fs11 hidden-xs' and self.crawling_ok:
             self.parser_date.append(data)
 
     def handle_endtag(self, tag):
@@ -181,6 +181,7 @@ def date_crawler(d, text):
             date.append(temp)
 
     print(date)
+    print(len(date))
 
     return date
 pass
@@ -222,7 +223,7 @@ for i in range(1, 10):
             sql1 = """insert into quei_board(board_num, q_title, q_link, q_date) 
                              values(null,%s, %s, %s)"""
 
-            curs.execute(sql1, (str(subject[index]), str(link[j]), str(date.today())))
+            curs.execute(sql1, (str(subject[index]), str(link[j]), str(date1[index])))
 
         index = 1 + index
 
