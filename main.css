@@ -5,7 +5,7 @@ body {
 }
 
 .grid {
-	margin: 200px 70px 150px 70px;
+	margin: 300px 70px 150px 70px;
 	-webkit-column-count:1;
 	-webkit-column-gap:10px;
 	-webkit-column-fill:auto;
@@ -36,9 +36,13 @@ img {
 	width:100%
 }
 
+a{
+	color: black;
+}
+
 p {
 	margin:0px;
-	font-size:1.4em;
+	font-size:1.3em;
 	font-family: 'Jua', sans-serif;
 }
 
