@@ -10,8 +10,8 @@ $result2 = $db->query($sql2); // quasarjone db
 //$sql3 = 'select * from assa_board';
 //$result3 = $db->query($sql3); // assajigu db
 
-//$sql4 = 'select * from jigu_board';
-//$result4 = $db->query($sql4); // jigupang db
+$sql4 = 'select * from pang_board';
+$result4 = $db->query($sql4); // jigupang db
 
 ?>
 
@@ -87,19 +87,24 @@ $result2 = $db->query($sql2); // quasarjone db
 			</div>
 			';
 		}
-	
-		while($jigu = $result4->fetch_array()){
+*/	
+		while($pang = $result4->fetch_array()){
 		echo '
-			<a href="'; echo $jigu[2]; echo'" target = "_blank">
+			<a href="'; echo $pang[2]; echo'" target = "_blank">
 			<div class="grid-item">
 				<img src="jigulogo.jpg">
 				<p>';
-					echo $jigu[1];
+					echo $pang[1];
+		echo '	</p>
+				<hr>
+				<p style = "font-size: 1.0em; text-align : right;">';
+					echo $pang[3];
 		echo '	</p>
 			</div>
+			</a>
 			';
 		}
-*/	
+	
 	?>
 
 		</div>
