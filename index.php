@@ -22,6 +22,11 @@ $result2 = $db->query($sql2); // quasarjone db
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<div>
+	<a href="index.php">
+		<img src="sales combine.png" style="display: table; width: 60%; margin: 100px auto 0px auto">
+	</a>
+</div>
 
 
 <div id="searchbox" class="container">

@@ -25,6 +25,12 @@ $result2 = $db->query($sql2); // quasarjone db
 </head>
 
 
+<div>
+	<a href="index.php">
+		<img src="sales combine.png" style="display: table; width: 60%; margin: 100px auto 0px auto">
+	</a>
+</div>
+
 
 <div id="searchbox" class="container">
 	
