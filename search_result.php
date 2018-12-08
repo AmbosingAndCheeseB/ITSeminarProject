@@ -47,6 +47,10 @@ $result2 = $db->query($sql2); // quasarjone db
 				<p>';
 					echo $coolen[1];
 		echo '	</p>
+				<hr>
+				<p style = "font-size: 1.0em; text-align : right;">';
+					echo $coolen[3];
+		echo '	</p>
 			</div>
 			</a>
 			';
@@ -60,7 +64,12 @@ $result2 = $db->query($sql2); // quasarjone db
 				<p>';
 					echo $quei[1];
 		echo '	</p>
+				<hr>
+				<p style = "font-size: 1.0em; text-align : right;">';
+					echo $quei[3];
+		echo '	</p>
 			</div>
+			</a>
 			';
 		}
 	
