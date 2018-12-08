@@ -2,6 +2,8 @@
 
 import requests
 from html.parser import HTMLParser
+from selenium import webdriver
+import time
 
 
 class InfoParser(HTMLParser):
@@ -118,8 +120,21 @@ def link_crawler(text):
     return data
 
 
+
+
 url = "https://www.pangdeals.com"
+
+chromedriver_dir = 'C:\Users\yang\Desktop\chromedriver_win32'
+driver = webdriver.Chrome(chromedriver_dir)
+time.sleep(5)
+
+loca = driver.find_element_by_class_name('box')
+loca.click()
+time.sleep(5)
+
 response = requests.get(url)
+
+driver.get(url)
 
 info = info_crawler(response.text)
 time = time_crawler(response.text)

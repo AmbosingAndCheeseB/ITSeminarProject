@@ -172,8 +172,7 @@ for i in range(1,10):
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
 
-    print(date_list, end='\n')
-    print(len(date_list))
+
     for j in range(0, 25):
 
         if(index == 225):
