@@ -15,12 +15,23 @@ $result2 = $db->query($sql2); // quasarjone db
 
 ?>
 
-<!DOCTYPE html><head>
+<!DOCTYPE html>
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="searchbox.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
+<div id="searchbox" class="container">
+	
+	<form method="get" action="search_result.php" class = "Search">	
+      <button id="sr" class="Search-label" for="Search-box"><i class="fa fa-search"></i></button>
+      <input type="text" name="search" class="Search-box" autocomplete="off">
+    </form>
+	
+</div>
 
 <div class="grid">
 	

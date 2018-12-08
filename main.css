@@ -5,7 +5,7 @@ body {
 }
 
 .grid {
-	margin: 300px 70px 150px 70px;
+	margin: 130px 70px 150px 70px;
 	-webkit-column-count:1;
 	-webkit-column-gap:10px;
 	-webkit-column-fill:auto;
