@@ -6,6 +6,13 @@ $result1 = $db->query($sql1); // coolenjoy db
 
 $sql2 = 'select * from quei_board';
 $result2 = $db->query($sql2); // quasarjone db
+
+//$sql3 = 'select * from assa_board';
+//$result3 = $db->query($sql3); // assajigu db
+
+//$sql4 = 'select * from jigu_board';
+//$result4 = $db->query($sql4); // jigupang db
+
 ?>
 
 <!DOCTYPE html><head>
@@ -18,6 +25,7 @@ $result2 = $db->query($sql2); // quasarjone db
 <div class="grid">
 	
 	<?php
+	
 		while($coolen = $result1->fetch_array()){
 		echo '
 			<a href="'; echo $coolen[2]; echo'" target = "_blank">
@@ -30,9 +38,7 @@ $result2 = $db->query($sql2); // quasarjone db
 			</a>
 			';
 		}
-	?>
-	
-	<?php
+
 		while($quei = $result2->fetch_array()){
 		echo '
 			<a href="'; echo $quei[2]; echo'" target = "_blank">
@@ -44,20 +50,31 @@ $result2 = $db->query($sql2); // quasarjone db
 			</div>
 			';
 		}
-	?>
-
+	
+/*		while($assa = $result3->fetch_array()){
+		echo '
+			<a href="'; echo $assa[2]; echo'" target = "_blank">
 			<div class="grid-item">
 				<img src="assalogo.jpg">
-				<p>
-					양지몬 움뫄쟁이
-				</p>
+				<p>';
+					echo $assa[1];
+		echo '	</p>
 			</div>
-
+			';
+		}
+	
+		while($jigu = $result4->fetch_array()){
+		echo '
+			<a href="'; echo $jigu[2]; echo'" target = "_blank">
 			<div class="grid-item">
 				<img src="jigulogo.jpg">
-				<p>
-					양지몬 움뫄쟁이
-				</p>
+				<p>';
+					echo $jigu[1];
+		echo '	</p>
 			</div>
-	
+			';
+		}
+*/	
+	?>
+
 		</div>
