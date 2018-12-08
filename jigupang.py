@@ -5,7 +5,11 @@ from html.parser import HTMLParser
 from selenium import webdriver
 from datetime import date
 from datetime import timedelta
+import time
 import pymysql
+import re
+
+
 
 class InfoParser(HTMLParser):
 
@@ -131,10 +135,14 @@ curs.execute(sql1)
 
 connect.commit()
 
+
+
+
 url = "https://www.pangdeals.com"
 
-chromedriver_dir = r'/var/www/html/python/chromedriver'
-driver = webdriver.Chrome(chromedriver_dir)
+
+driver =webdriver.PhantomJS()
+driver.implicitly_wait(3)
 driver.get(url)
 time.sleep(5)
 
@@ -178,7 +186,7 @@ for i in range(len(info)):
 
     curs.execute(sql1, (info[i], link[i], date1[i]))
 
-
+driver.quit()
 
 connect.commit()
 connect.close()

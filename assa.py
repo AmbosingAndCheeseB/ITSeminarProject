@@ -104,6 +104,6 @@ for i in range(1, 10):
     response = requests.get(url)
     info = info_crawler(response.text)
     link = link_crawler(response.text)
+    print(info)
+    print(link)
 
-print(info)
-print(link)
