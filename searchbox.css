@@ -12,17 +12,18 @@ input[type="search"] {
 
 .container {
   width: 70%;
-  margin: 120px auto auto;
+  margin: 150px auto auto;
 }
 
 .Search {
   position: relative;
-  display: flex;
+  display: table;
+	width: 100%;
   color: #555;
 }
 
 .Search-box {
-  flex: 1 0 auto;
+  width: 100%;
   padding: 8px 20px;
   height: 60px;
   border: 0;
@@ -36,13 +37,13 @@ input[type="search"] {
 	background-color: rgba(255,255,255,0.5);
 }
 
-.Search-box:focus,.select:focus {
+.Search-box:focus {
   outline: 0;
 }
 
 .Search-label {
 	position: absolute;
 	top: 8px;
-	right: 20px;
+	right: 10px;
 	font-size: 30px;
 }
