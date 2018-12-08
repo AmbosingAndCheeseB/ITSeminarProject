@@ -3,7 +3,8 @@
 import requests
 from html.parser import HTMLParser
 from selenium import webdriver
-import time
+from datetime import date
+from datetime import timedelta
 
 
 class InfoParser(HTMLParser):
@@ -120,44 +121,64 @@ def link_crawler(text):
     return data
 
 
+connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
+curs = connect.cursor()
+
+sql1 = """Truncate table pang_board"""
+
+curs.execute(sql1)
+
+connect.commit()
 
 url = "https://www.pangdeals.com"
 
-chromedriver_dir = 'C:\Users\yang\Desktop\chromedriver_win32'
+chromedriver_dir = r'C:\Users\yang\Desktop\chromedriver_win32\chromedriver.exe'
 driver = webdriver.Chrome(chromedriver_dir)
-time.sleep(5)
-
-loca = driver.find_element_by_class_name('box')
-loca.click()
-time.sleep(5)
-
-response = requests.get(url)
-
 driver.get(url)
+time.sleep(5)
 
-info = info_crawler(response.text)
-time = time_crawler(response.text)
-link = link_crawler(response.text)
+for i in range(0, 5):
+    loca = driver.find_element_by_class_name('box')
+    loca.click()
+    time.sleep(5)
+source = driver.page_source
+
+info = info_crawler(source)
+time = time_crawler(source)
+link = link_crawler(source)
 
 print(info)
 print(time)
 print(link)
+date1 = []
 
-count = 0
-for i in info:
-    count += 1
+for i in time:
+    if '시간전' in i:
+        date1.append(str(date.today()))
+    elif '일전' in i:
+        today = date.today()
+        temp = re.findall('\d+', i)
+        temp = int(temp.pop())
+        now = timedelta(days=temp)
+        days = today - now
+        date1.append(str(days))
+    elif '개월전' in i:
+        today = date.today()
+        temp = re.findall('\d+', i)
+        temp = int(temp.pop())
+        temp = temp * 30
+        now = timedelta(days=temp)
+        days = today - now
+        date1.append(str(days))
 
-print(count)
+for i in range(len(info)):
+    sql1 = """insert into pang_board(board_num, p_title, p_link, p_date) 
+                              values(null,%s, %s, %s)"""
 
-count = 0
-for j in time:
-    count += 1
+    curs.execute(sql1, (info[i], link[i], date1[i]))
 
-print(count)
 
-count = 0
-for k in link:
-    count += 1
 
-print(count)
+connect.commit()
+connect.close()

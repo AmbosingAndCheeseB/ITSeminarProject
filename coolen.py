@@ -179,7 +179,7 @@ for i in range(1,10):
             break
 
         temp = str(subject[index][1])
-        if temp.replace(" ", ""):
+        if temp.replace(" ", "") and '품절' not in temp and '펑' not in temp:
 
 
             temp = str(subject[index][1])

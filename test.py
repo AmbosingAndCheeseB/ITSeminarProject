@@ -1,14 +1,26 @@
-import pymysql
+from datetime import date
+from datetime import timedelta
+import re
 
-conn = pymysql.connect(host='localhost', user='root', password='Tjdduswldnjs12',
-                       db='ITProj', charset='utf8')
+date1 = []
+time = ['1시간전', '2시간전', '3일전', '4일전', '1개월전', '2개월전']
 
-curs = conn.cursor()
-sql = """insert into coolen_board(board_id, c_title, c_link, c_date)
-         values (null, %s, %s, %s)"""
-print(sql)
-curs.execute(sql, ('홍길동', 1, '서울'))
-curs.execute(sql, ('이연수', 2, '서울'))
-conn.commit()
-
-conn.close()
+for i in time:
+    if '시간전' in i:
+        date1.append(str(date.today()))
+    elif '일전' in i:
+        today = date.today()
+        temp = re.findall('\d+', i)
+        temp = int(temp.pop())
+        now = timedelta(days=temp)
+        days = today - now
+        date1.append(str(days))
+    elif '개월전' in i:
+        today = date.today()
+        temp = re.findall('\d+', i)
+        temp = int(temp.pop())
+        temp = temp * 30
+        now = timedelta(days=temp)
+        days = today - now
+        date1.append(str(days))
+print(date1)
