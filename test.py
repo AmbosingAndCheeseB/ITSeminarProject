@@ -1,9 +1,10 @@
 from datetime import date
 from datetime import timedelta
-import re
+import time
 
-date1 = []
-time = ['1시간전', '2시간전', '3일전', '4일전', '1개월전', '2개월전']
+date1 = ['12-08', '12-07']
+now = time.localtime()
+print(now.tm_year)
 
 for i in time:
     if '시간전' in i:
@@ -23,4 +24,3 @@ for i in time:
         now = timedelta(days=temp)
         days = today - now
         date1.append(str(days))
-print(date1)

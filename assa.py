@@ -4,106 +4,207 @@ import requests
 from html.parser import HTMLParser
 
 
-class InfoParser(HTMLParser):
+# link parser
 
-    this_tag = ''
+class OurParser(HTMLParser):
     last_tag = ''
-    crawling_ok = False
-    level_ok = True
-    parser_data = []
 
     def __init__(self):
         self.reset()
         self.strict = False
         self.convert_charrefs = True
+        self.link = []
+        self.crawling_ok = False
 
     def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
         if tag == 'tr':
             for name, value in attrs:
                 if name == 'class' and 'bo_best' not in value and 'bo_notice' not in value:
                     self.crawling_ok = True
 
-        self.this_tag = tag
+        if tag == "a":
+            for name, value in attrs:
+                if name == "href" and self.crawling_ok:
+                    self.link.append(value)
 
     def handle_data(self, data):
-        if self.this_tag == 'span' and data == 'Lv2.':
-            self.level_ok = False
-
-        if self.crawling_ok and self.level_ok:
-            if self.this_tag == 'font' and self.last_tag == 'a':
-                if '[종료]' not in data:
-                    self.parser_data.append(data)
-
-        if self.this_tag == 'font' and self.last_tag == 'a':
-            self.level_ok = True
-
-        self.last_tag = self.this_tag
+        if self.last_tag == 'span' and 'Lv2' in data:
+            self.link.pop()
 
     def handle_endtag(self, tag):
-        if tag == 'tbody':
+        if tag == 'a':
             self.crawling_ok = False
 
-    def close(self):
-        HTMLParser.close(self)
+    def get_link(self):
+        return self.link
 
 
-class linkParser(HTMLParser):
+pass
 
-    crawling_ok = False
-    last_value = ''
-    parser_link = []
+
+def only_href(s, html):
+    s.feed(html)
+    try:
+
+        s.handle_starttag()
+    except:
+        return
+
+
+def need_href(s):
+    temp = s.get_link()
+    new_link = []
+    for item in temp:
+        if 'hotdeal&' in item and 'wr_id' in item and 'page=' in item:
+            new_link.append(item)
+    real_link = []
+
+    # boare num = 30
+    i = 1
+    for item in new_link:
+        if i <= 30:
+            real_link.append(item)
+        i = i + 1
+    return real_link
+
+
+# subject parser
+class subjectParser(HTMLParser):
+    last_tag = ''
+    last_attrs = ''
+    parser_sub = []
 
     def __init__(self):
         self.reset()
         self.strict = False
         self.convert_charrefs = True
+        self.is_subject = False
+        self.crawling_ok = False
+        self.level_ok = False
 
     def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
         if tag == 'tr':
             for name, value in attrs:
-                if name == 'class' and value == '':
+                if name == 'class' and 'bo_best' not in value and 'bo_notice' not in value:
                     self.crawling_ok = True
 
-        if tag == "a" and self.crawling_ok:
-            for name, value in attrs:
-                if name == "href" and self.last_value == 'td_subject':
-                    if value is not '#':
-                        self.parser_link.append(value)
-
         for name, value in attrs:
-            self.last_value = value
+            self.last_attrs = value
+            if value == 'td_subject' and self.crawling_ok:
+                self.is_subject = True
 
     def handle_data(self, data):
-        if '[종료]' in data:
-            self.parser_link.pop()
+
+        if 'Lv2' in data:
+            self.level_ok = False
+
+        if self.is_subject and self.last_tag == 'font' and self.level_ok:
+            self.parser_sub.append(data)
 
     def handle_endtag(self, tag):
-        if tag == 'tbody':
+        self.last_tag = tag
+        if tag == 'tr':
             self.crawling_ok = False
+        if self.last_tag == 'font':
+            self.is_subject = False
+            self.level_ok = True
 
     def close(self):
         HTMLParser.close(self)
 
 
-def info_crawler(text):
-    parser = InfoParser()
-    parser.feed(text)
-    data = parser.parser_data
-    return data
+pass
 
 
-def link_crawler(text):
-    parser = linkParser()
-    parser.feed(text)
-    data = parser.parser_link
-    return data
+def subject_crawler(s, text):
+    s.feed(text)
+    subject = []
+    print(s.parser_sub)
+    print(len(s.parser_sub))
+    for item in s.parser_sub:
+        temp = str(item.strip())
+        if temp:
+            subject.append(temp)
+    return subject
 
 
-for i in range(1, 10):
-    url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal&page="+str(i)
+pass
+
+
+# date parser
+class dateParser(HTMLParser):
+    last_tag = ''
+    last_attrs = ''
+    parser_date = []
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_date = False
+        self.crawling_ok = False
+        self.level_ok = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        if tag == 'tr':
+            for name, value in attrs:
+                if name == 'class' and 'bo_best' not in value and 'bo_notice' not in value:
+                    self.crawling_ok = True
+
+        for name, value in attrs:
+            self.last_attrs = value
+            if value == 'td_date' and self.crawling_ok:
+                self.is_date = True
+
+    def handle_data(self, data):
+
+        if 'Lv2' in data:
+            self.level_ok = False
+
+        if self.last_tag == 'td' and self.is_date and self.level_ok:
+            self.parser_date.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'tr':
+            self.crawling_ok = False
+            self.level_ok = True
+            self.is_date = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+
+pass
+
+
+def date_crawler(d, text):
+    d.feed(text)
+    date = []
+
+    for item in d.parser_date:
+        temp = str(item.strip())
+        if temp:
+            date.append(temp)
+
+    return date
+
+
+pass
+
+for i in range(0, 10):
+    url = "http://www.ajpeople.com/bbs/board.php?bo_table=hotdeal&page=" + str(i)
     response = requests.get(url)
-    info = info_crawler(response.text)
-    link = link_crawler(response.text)
-    print(info)
-    print(link)
+
+    link = OurParser()
+    subject = subjectParser()
+    date = dateParser()
+
+    only_href(link, response.text)
+
+    subject_parser = subject_crawler(subject, response.text)
+    date_parser = date_crawler(date, response.text)
+    link_parser = need_href(link)
 
