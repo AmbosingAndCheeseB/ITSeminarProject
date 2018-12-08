@@ -5,7 +5,7 @@ from html.parser import HTMLParser
 from selenium import webdriver
 from datetime import date
 from datetime import timedelta
-
+import pymysql
 
 class InfoParser(HTMLParser):
 
@@ -133,7 +133,7 @@ connect.commit()
 
 url = "https://www.pangdeals.com"
 
-chromedriver_dir = r'C:\Users\yang\Desktop\chromedriver_win32\chromedriver.exe'
+chromedriver_dir = r'/var/www/html/python/chromedriver'
 driver = webdriver.Chrome(chromedriver_dir)
 driver.get(url)
 time.sleep(5)

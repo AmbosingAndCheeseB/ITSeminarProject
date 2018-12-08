@@ -20,7 +20,7 @@ class InfoParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == 'tr':
             for name, value in attrs:
-                if name == 'class' and value == '':
+                if name == 'class' and 'bo_best' not in value and 'bo_notice' not in value:
                     self.crawling_ok = True
 
         self.this_tag = tag
