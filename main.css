@@ -5,14 +5,10 @@ body {
 }
 
 .grid {
-	margin: 130px 70px 150px 70px;
-	-webkit-column-count:1;
 	-webkit-column-gap:20px;
 	-webkit-column-fill:auto;
-	-moz-column-count:1;
 	-moz-column-gap:20px;
 	-moz-column-fill:auto;
-	column-count:1;
 	column-gap:20px;
 	column-fill:auto;
 }
@@ -21,7 +17,7 @@ body {
 	border: 2px solid rgba(128,128,128,0.60);
 	display:inline-block;
 	background:none;
-	margin:0px 0px 50px 0px;
+	margin:0px 10px 50px 10px;
 	padding:3px 3px 10px 3px;
 	-webkit-column-break-inside:avoid;
 	-moz-column-break-inside:avoid;
@@ -30,6 +26,10 @@ body {
 
 .grid-item:hover{
 	background:rgba(128,128,128,0.60);
+}
+
+.break {
+	break-after: auto;
 }
 
 img {
@@ -42,7 +42,7 @@ a{
 
 p {
 	margin:0px;
-	font-size:1.3em;
+	font-size:1.5em;
 	font-family: 'Jua', sans-serif;
 }
 
@@ -50,26 +50,50 @@ hr {
 	border:1px dotted rgba(128,128,128,0.50);
 }
 
-@media (min-width: 450px) {
+@media (min-width: 200px) {
   .grid {
+	  margin: 150px 50px;
+    -webkit-column-count:1;
+	  -moz-column-count:1;
+	  column-count:1; 
+  }
+	.break {
+	break-after: auto;
+	}
+}
+
+@media (min-width: 600px) {
+  .grid {
+	  margin: 150px 50px;
     -webkit-column-count:2;
 	  -moz-column-count:2;
 	  column-count:2; 
   }
+	.break {
+	break-after: auto;
+	}
 }
 
-@media (min-width: 650px) {
+@media (min-width: 1000px) {
   .grid {
+	  margin: 150px 100px;
     -webkit-column-count:3;
 	  -moz-column-count:3;
 	  column-count:3; 
   }
+	.break {
+	break-after: auto;
+}
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1400px) {
   .grid {
+	  margin: 150px;
     -webkit-column-count:4;
 	  -moz-column-count:4;
 	  column-count:4; 
   }
+	.break {
+	break-after: column;
+	}
 }
