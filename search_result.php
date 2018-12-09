@@ -12,7 +12,7 @@ $result2 = $db->query($sql2); // quasarjone db
 $sql3 = 'select * from pang_board where p_title like "%'.$search.'%"';
 $result3 = $db->query($sql3); // jigupang db
 
-$sql4 = 'select * from assa_board where a_title like "%'.$search.'%"';
+$sql4 = 'select * from seven_board where s_title like "%'.$search.'%"';
 $result4 = $db->query($sql4); // assajigu db
 
 ?>
@@ -104,17 +104,17 @@ $result4 = $db->query($sql4); // assajigu db
 		echo '</div>';
 	
 	
-			while($assa = $result4->fetch_array()){
+			while($seven = $result4->fetch_array()){
 			echo '
-				<a href="'; echo $assa[2]; echo'" target = "_blank">
+				<a href="'; echo $seven[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="assalogo.jpg">
+					<img src="sevenlogo.jpg">
 					<p>';
-						echo $assa[1];
+						echo $seven[1];
 			echo '	</p>
 					<hr>
 					<p style = "font-size: 1.0em; text-align : right;">';
-						echo $assa[3];
+						echo $seven[3];
 			echo '	</p>
 				</div>
 				</a>
