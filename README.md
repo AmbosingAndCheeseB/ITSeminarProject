@@ -7,7 +7,7 @@ github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었
 *****
 <br>  
 #### 서버 설치  
-
+  
 1.  apache2 install  
 ```sh
 $ apt install apache2
@@ -21,7 +21,7 @@ $ apt install mysql-server install
 $ apt install php-mysql
 ```
 *****
-<br>  
+   
 #### 파이썬 모듈 설치  
  - 여기에 제공된 크롤러를 사용하려면 설치해야할 모듈들이 존재한다.  
 1. pip3 install  
