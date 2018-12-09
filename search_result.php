@@ -15,6 +15,9 @@ $result3 = $db->query($sql3); // jigupang db
 $sql4 = 'select * from seven_board where s_title like "%'.$search.'%"';
 $result4 = $db->query($sql4); // assajigu db
 
+$sql5 = 'select * from notice_board';
+$result5 = $db->query($sql5);
+
 ?>
 
 <!DOCTYPE html><head>
@@ -38,6 +41,24 @@ $result4 = $db->query($sql4); // assajigu db
       <input type="text" name="search" class="Search-box" autocomplete="off">
     </form>
 	
+</div>
+
+<div class="board">
+	
+	<?php
+	
+	while($notice = $result5->fetch_array()){
+		echo '<a href="';
+		echo $notice[2];
+		echo '" style="text-decoration:none" target="_blank">
+			<div class = "noti">
+			<i class="fa fa-exclamation-triangle" style = "color:#734000; margin:10px"></i>';
+		echo $notice[1];
+		echo '</div>
+			</a>';
+		}
+	
+	?>
 </div>
 
 <div class="grid">

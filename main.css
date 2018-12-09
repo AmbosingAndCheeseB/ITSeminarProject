@@ -4,6 +4,10 @@ body {
 	background:rgba(205,205,205,1.00);
 }
 
+.money {
+	float: right;
+}
+
 .board {
 	width: 50%;
 	margin: 100px auto auto;

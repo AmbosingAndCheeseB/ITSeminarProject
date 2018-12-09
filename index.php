@@ -59,7 +59,10 @@ $result5 = $db->query($sql5);
 	?>
 </div>
 
-
+<div class="money">
+<iframe height= 400px width= 250px src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
+</div>
+	
 <div class="grid">
 
 	<?php
