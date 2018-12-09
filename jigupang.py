@@ -156,9 +156,7 @@ info = info_crawler(source)
 time = time_crawler(source)
 link = link_crawler(source)
 
-print(info)
-print(time)
-print(link)
+
 date1 = []
 
 for i in time:
