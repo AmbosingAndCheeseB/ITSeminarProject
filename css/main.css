@@ -5,7 +5,11 @@ body {
 }
 
 .money {
-	float: right;
+	height: 400px;
+	width: 250px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 
 .board {
@@ -16,7 +20,6 @@ body {
 
 .noti {
 	border: 0.7px dotted #B8B8B8;
-	font-size:1.8em;
 	font-family: 'Jua', sans-serif;
 }
 
@@ -70,9 +73,9 @@ hr {
 	border:1px dotted rgba(128,128,128,0.50);
 }
 
-@media (min-width: 200px) {
+@media (min-width: 300px) {
   .grid {
-	  margin: 150px 50px;
+	  margin: 150px 70px;
     -webkit-column-count:1;
 	  -moz-column-count:1;
 	  column-count:1; 
@@ -80,17 +83,29 @@ hr {
 	.break {
 	break-after: auto;
 	}
+	.money {
+		visibility: hidden;
+	}
+	.noti {
+		font-size: 1.2em;
+	}
 }
 
 @media (min-width: 600px) {
   .grid {
-	  margin: 150px 50px;
+	  margin: 150px 70px;
     -webkit-column-count:2;
 	  -moz-column-count:2;
 	  column-count:2; 
   }
 	.break {
 	break-after: auto;
+	}
+	.money {
+		visibility: hidden;
+	}
+	.noti {
+		font-size: 1.4em;
 	}
 }
 
@@ -103,7 +118,13 @@ hr {
   }
 	.break {
 	break-after: auto;
-}
+	}
+	.money {
+		visibility: visible;
+	}
+	.noti {
+		font-size: 1.6em;
+	}
 }
 
 @media (min-width: 1400px) {
@@ -115,5 +136,11 @@ hr {
   }
 	.break {
 	break-after: column;
+	}
+	.money {
+		visibility: visible;
+	}
+	.noti {
+		font-size: 1.8em;
 	}
 }

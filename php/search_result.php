@@ -27,7 +27,9 @@ $result5 = $db->query($sql5);
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div style="text-align: center">
+<div>
+	<iframe class = "money" src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
+	
 	<a href="index.php">
 		<img src="../image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
