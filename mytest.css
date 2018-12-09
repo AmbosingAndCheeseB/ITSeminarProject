@@ -1,0 +1,18 @@
+.event {
+  display: block;
+  background: grey;
+  width: 30%;
+  height: 300px;
+  margin: 1%;
+}
+
+.events-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.events-viewport {
+  overflow: hidden;
+  height: 0;
+  transition: 0.3s height ease-in-out;
+}
