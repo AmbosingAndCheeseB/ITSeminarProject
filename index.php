@@ -49,8 +49,8 @@ $result5 = $db->query($sql5);
 		echo '<div class = "not">
 			<a href="';
 		echo $notice[2];
-		echo '">
-			<i class="fa fa-exclamation-triangle" style = "color:#734000"></i>';
+		echo '" style="text-decoration:none" target="_blank">
+			<i class="fa fa-exclamation-triangle" style = "color:#734000; margin:10px"></i>';
 		echo $notice[1];
 		echo '</a>
 			</div>';

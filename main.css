@@ -7,10 +7,11 @@ body {
 .board {
 	width: 50%;
 	margin: 100px auto auto;
+	background:#EBEBEB;
 }
 
 .not {
-	margin:auto auto 10px auto;
+	border: 0.7px dotted #B8B8B8;
 	font-size:1.8em;
 	font-family: 'Jua', sans-serif;
 }
