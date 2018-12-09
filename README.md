@@ -53,7 +53,7 @@ $ apt-get install python3-pip
 $ apt-get install HTMLParser
 ```
    
-- python과 db를 연동할 것이기에 pymysql도 설치한다.  
+- python과 db를 연동할 것이기에 pymysql도 설치한다.        
 4. pymysql install  
  ```sh
 $ pip3 install PyMySQL
