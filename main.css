@@ -21,7 +21,7 @@ body {
 	border: 2px solid rgba(128,128,128,0.60);
 	display:inline-block;
 	background:none;
-	margin:0px 0px 50px 0px;
+	margin:0px 10px 50px 10px;
 	padding:3px 3px 10px 3px;
 	-webkit-column-break-inside:avoid;
 	-moz-column-break-inside:avoid;
@@ -42,7 +42,7 @@ a{
 
 p {
 	margin:0px;
-	font-size:1.3em;
+	font-size:1.5em;
 	font-family: 'Jua', sans-serif;
 }
 
