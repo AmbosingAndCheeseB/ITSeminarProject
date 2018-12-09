@@ -59,15 +59,15 @@ $ apt-get install HTMLParser
 $ pip3 install PyMySQL
 ```
 
-#
+####
 - 크롤링을 할 때에 동적 크롤링을 해야할 때가 있는데 이 때 selenium과 phantom.js가 필요하다.   
-#
-#
+####
+####
 5. selenium install   
  ```sh
 $ pip3 install selenium
 ```  
-#
+####
 6. phantom.js install   
  ```sh
 $ apt-get install -y wget libfontconfig
