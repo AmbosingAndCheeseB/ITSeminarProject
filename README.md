@@ -9,18 +9,25 @@ github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었
 #
 #
 #### 서버 설치  
-#
-#
+
+
+
+
+
+
 1.  apache2 install  
 ```sh
 $ apt install apache2
 ```
-#
+
+
+
 2. mysql-server install  
 ```sh
 $ apt install mysql-server install
 ```
-#
+
+
 3. php install
 ```sh
 $ apt install php-mysql
@@ -51,7 +58,7 @@ $ apt-get install HTMLParser
  ```sh
 $ pip3 install PyMySQL
 ```
-#
+
 #
 - 크롤링을 할 때에 동적 크롤링을 해야할 때가 있는데 이 때 selenium과 phantom.js가 필요하다.   
 #
