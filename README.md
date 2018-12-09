@@ -1,10 +1,9 @@
-﻿# SALES COMBINE
+﻿# SALES COMBINE  
 *****
-<br>
-sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳에 모아 놓은 사이트다.
-github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었다.
-운영체제 환경은 Ubuntu 16.04로 진행했다.
-<br>
+
+sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳에 모아 놓은 사이트다.  
+github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었다.  
+운영체제 환경은 Ubuntu 16.04로 진행했다.  
 *****
 <br>
 #### 서버 설치
