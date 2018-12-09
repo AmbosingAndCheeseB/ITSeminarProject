@@ -22,14 +22,14 @@ $result5 = $db->query($sql5);
 
 <!DOCTYPE html><head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="searchbox.css">
+    <link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/searchbox.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <div style="text-align: center">
 	<a href="index.php">
-		<img src="sales combine.png" style="width: 40%; margin: 100px auto 0px auto">
+		<img src="../image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
 </div>
 
@@ -70,7 +70,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $coolen[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="coolenlogo.jpg">
+					<img src="../image/coolenlogo.jpg">
 					<p>';
 						echo $coolen[1];
 			echo '	</p>
@@ -90,7 +90,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $quei[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="quasarlogo.jpg">
+					<img src="../image/quasarlogo.jpg">
 					<p>';
 						echo $quei[1];
 			echo '	</p>
@@ -110,7 +110,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $pang[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="jigulogo.jpg">
+					<img src="../image/jigulogo.jpg">
 					<p>';
 						echo $pang[1];
 			echo '	</p>
@@ -129,7 +129,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $seven[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="sevenlogo.jpg">
+					<img src="../image/sevenlogo.jpg">
 					<p>';
 						echo $seven[1];
 			echo '	</p>
