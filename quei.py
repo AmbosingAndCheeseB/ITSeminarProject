@@ -214,7 +214,7 @@ class textParser(HTMLParser):
 
     def handle_data(self, data):
 
-        if  self.crawling_ok and self.last_tag == 'p':
+        if  self.crawling_ok:
             self.temp_str = self.temp_str + data
             self.temp_str = self.temp_str.strip()
             self.temp_str = self.temp_str + " "
@@ -256,7 +256,7 @@ curs.execute(sql1)
 connect.commit()
 
 index = 0
-for i in range(1, 10):
+for i in range(1, 6):
     url = "https://quasarzone.co.kr/bbs/board.php?bo_table=qb_saleinfo&sca=%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4&page="+str(i)
 
     html_result = requests.get(url)
@@ -281,9 +281,11 @@ for i in range(1, 10):
 
         if (index == 269):
             break
+        real_text = ''
+        for k in text_parser:
+            real_text = real_text + k
 
-
-        if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
+        if '종료' not in subject[index] and '품절' not in subject[index] and '중복' not in subject[index] and '펑' not in subject[index]:
             sql1 = """insert into quei_board(board_num, q_title, q_link, q_date, q_text) 
                              values(null,%s, %s, %s, %s)"""
 

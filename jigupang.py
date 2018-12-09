@@ -103,6 +103,58 @@ class linkParser(HTMLParser):
     def close(self):
         HTMLParser.close(self)
 
+#text parser
+class textParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    parser_text = []
+    temp_str = ''
+
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_text = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        for name, value in attrs:
+            if value == 'desc':
+                self.is_text = True
+
+    def handle_data(self, data):
+
+        if self.is_text:
+            self.temp_str = self.temp_str + data
+            self.temp_str = self.temp_str.strip()
+            self.temp_str = self.temp_str + " "
+
+    def handle_endtag(self, tag):
+
+        if tag == 'p':
+            self.parser_text.append(self.temp_str)
+            self.temp_str = ''
+            self.is_text = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+def text_crawler(s, text):
+    s.feed(text)
+    text1 = ''
+
+    for item in s.parser_text:
+        temp = str(item.strip())
+        if temp:
+            text1 = temp
+
+
+    return text1
+pass
+
 
 def info_crawler(text):
     parser = InfoParser()
@@ -179,10 +231,21 @@ for i in time:
         date1.append(str(days))
 
 for i in range(len(info)):
-    sql1 = """insert into pang_board(board_num, p_title, p_link, p_date) 
-                              values(null,%s, %s, %s)"""
+    url = link[i]
 
-    curs.execute(sql1, (info[i], link[i], date1[i]))
+    html_result = requests.get(url)
+
+    text = textParser()
+    text_parser = text_crawler(text, html_result.text)
+
+    real_text = ''
+    for k in text_parser:
+        real_text = real_text + k
+
+    sql1 = """insert into pang_board(board_num, p_title, p_link, p_date, p_text) 
+                              values(null,%s, %s, %s, %s)"""
+
+    curs.execute(sql1, (info[i], link[i], date1[i], real_text))
 
 driver.quit()
 

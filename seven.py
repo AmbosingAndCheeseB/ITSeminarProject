@@ -175,6 +175,58 @@ def date_crawler(d, text):
     return date
 pass
 
+#text parser
+class textParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    parser_text = []
+    temp_str = ''
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.is_text = False
+
+    def handle_starttag(self, tag, attrs):
+        for name, value in attrs:
+            if value == 'bo_v_con':
+                self.is_text = True
+
+    def handle_data(self, data):
+
+        if self.is_text:
+            self.temp_str = self.temp_str + data
+            self.temp_str = self.temp_str.strip()
+            self.temp_str = self.temp_str + " "
+
+    def handle_endtag(self, tag):
+        if tag == 'div':
+            self.parser_text.append(self.temp_str)
+            self.temp_str = ''
+            self.is_text = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+def text_crawler(s, text):
+    s.feed(text)
+    text1 = ''
+
+    for item in s.parser_text:
+        temp = str(item.strip())
+        if temp:
+            text1 = temp
+
+
+    return text1
+pass
+
+
+
+
 connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
 curs = connect.cursor()
@@ -204,15 +256,25 @@ for i in range(0, 10):
 
     stop = len(subject) + stop
     for j in range(0, len(link)):
+        url = link[j]
+
+        html_result = requests.get(url)
+
+        text = textParser()
+        text_parser = text_crawler(text, html_result.text)
 
         if (index == stop):
             break
 
-        if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
-            sql1 = """insert into seven_board(board_num, s_title, s_link, s_date) 
-                                 values(null,%s, %s, %s)"""
+        real_text = ''
+        for k in text_parser:
+            real_text = real_text + k
 
-            curs.execute(sql1, (str(subject[index]), str(link[j]), str(date_list[index])))
+        if '종료' not in subject[index] or '품절' not in subject[index] or '중복' not in subject[index] or '펑' not in subject[index]:
+            sql1 = """insert into seven_board(board_num, s_title, s_link, s_date, s_text) 
+                                 values(null,%s, %s, %s, %s)"""
+
+            curs.execute(sql1, (str(subject[index]), str(link[j]), str(date_list[index]), real_text))
 
         index = 1 + index
 

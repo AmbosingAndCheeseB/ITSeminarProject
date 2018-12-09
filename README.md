@@ -1,27 +1,56 @@
-﻿<!DOCTYPE html>
-
-<head>
-</head>
-
-<body>
-<h1>Sales Combine<h1>
-<h3>201410697 양지원<br>201615383 김성연<h3><hr>
-<p> AMP web server install <br><br>
-	1. apache2 install <br>
-	`apt install apache2` <br>
-	2. mysql-server install <br>
-	`apt install mysql-server install` <br>
-	3. php install <br>
-	`apt install php php-mysql` <br><hr><br>
-	selenium 설치하기 <br>
-	명령어 창에서 <br>
-	`pip install selenium`<br><hr><br>
-	Selenium은 기본적으로 FireFox를 내장하고 있다. driver를 설치하면 다른 브라우저도 사용 가능하다.<br>
-	여기서는 크롬을 사용하기에 먼저 크롬을 설치.<br>
-	<h6>    `wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add` -<br>
-	    `sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'`<br> </h6>
-	</p>	
-</body>
-
-</html>
+﻿# SALES COMBINE
+*****
+<br>
+sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳에 모아 놓은 사이트다.
+github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었다.
+운영체제 환경은 Ubuntu 16.04로 진행했다.
+<br>
+*****
+<br>
+#### 서버 설치
+<br>
+1.  apache2 install
+```sh
+$ apt install apache2
+```
+2. mysql-server install
+```sh
+$ apt install mysql-server install
+```
+3. php install
+```sh
+$ apt install php-mysql
+```
+*****
+<br>
+#### 파이썬 모듈 설치
+ - 여기에 제공된 크롤러를 사용하려면 설치해야할 모듈들이 존재한다.
+1. pip3 install
+ ```sh
+$ apt-get install python3-pip
+```
+2. request install 
+ ```sh
+$ apt-get install python3-pip
+```
+3. HTMLParser install
+ ```sh
+$ apt-get install HTMLParser
+```
+<br>
+- python과 db를 연동할 것이기에 pymysql도 설치한다.
+4. pymysql install
+ ```sh
+$ pip3 install PyMySQL
+```
+<br>
+- 크롤링을 할 때에 동적 크롤링을 해야할 때가 있는데 이 때 selenium과 phantom.js가 필요하다.
+5. selenium install
+ ```sh
+$ pip3 install PyMySQL
+```
+6. phantom.js install
+ ```sh
+$ pip3 install PyMySQL
+```
 

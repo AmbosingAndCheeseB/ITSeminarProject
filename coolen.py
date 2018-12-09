@@ -163,13 +163,12 @@ class textParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         self.last_tag = tag
         for name, value in attrs:
-            self.last_attrs = value
             if value == 'bo_v_con':
                 self.crawling_ok = True
 
     def handle_data(self, data):
 
-        if  self.crawling_ok and self.last_tag == 'p':
+        if  self.crawling_ok:
             self.temp_str = self.temp_str + data
             self.temp_str = self.temp_str.strip()
             self.temp_str = self.temp_str + " "
