@@ -26,12 +26,11 @@ $result5 = $db->query($sql5);
 </head>
 
 
-<div>
-	<iframe class = "money" src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
-	
+<div style="text-align: center">
 	<a href="index.php">
 		<img src="image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
+	<iframe class = "money" src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
 </div>
 
 
