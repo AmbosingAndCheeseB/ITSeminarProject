@@ -36,19 +36,19 @@ $ apt-get install python3-pip
  ```sh
 $ apt-get install HTMLParser
 ```
-<br>  
+   
 - python과 db를 연동할 것이기에 pymysql도 설치한다.  
 4. pymysql install  
  ```sh
 $ pip3 install PyMySQL
 ```
-<br>  
-- 크롤링을 할 때에 동적 크롤링을 해야할 때가 있는데 이 때 selenium과 phantom.js가 필요하다.  
-5. selenium install  
+  
+- 크롤링을 할 때에 동적 크롤링을 해야할 때가 있는데 이 때 selenium과 phantom.js가 필요하다.   
+5. selenium install   
  ```sh
 $ pip3 install PyMySQL
 ```  
-6. phantom.js install  
+6. phantom.js install   
  ```sh
 $ pip3 install PyMySQL
 ```
