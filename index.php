@@ -13,6 +13,9 @@ $result3 = $db->query($sql3); // jigupang db
 $sql4 = 'select * from seven_board';
 $result4 = $db->query($sql4); // sevenjone db
 
+$sql5 = 'select * from notice_board';
+$result5 = $db->query($sql5);
+
 ?>
 
 <!DOCTYPE html><head>
@@ -38,6 +41,25 @@ $result4 = $db->query($sql4); // sevenjone db
 	
 </div>
 
+<div class="board">
+	
+	<?php
+	
+	while($notice = $result5->fetch_array()){
+		echo '<div class = "not">
+			<a href="';
+		echo $notice[2];
+		echo '">
+			<i class="fa fa-exclamation-triangle" style = "color:#734000"></i>';
+		echo $notice[1];
+		echo '</a>
+			</div>';
+		}
+	
+	?>
+</div>
+
+
 <div class="grid">
 
 	<?php
@@ -45,7 +67,7 @@ $result4 = $db->query($sql4); // sevenjone db
 		echo '<div class="break">';
 		while($coolen = $result1->fetch_array()){
 			echo '
-				<a href="'; echo $coolen[2]; echo'" target = "_blank">
+				<a href="'; echo $coolen[3]; echo'" target = "_blank">
 				<div class="grid-item">
 					<img src="coolenlogo.jpg">
 					<p>';
@@ -53,7 +75,7 @@ $result4 = $db->query($sql4); // sevenjone db
 			echo '	</p>
 					<hr>
 					<p style = "font-size: 1.0em; text-align : right;">';
-						echo $coolen[3];
+						echo $coolen[4];
 			echo '	</p>
 				</div>
 				</a>

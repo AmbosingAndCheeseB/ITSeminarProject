@@ -4,6 +4,17 @@ body {
 	background:rgba(205,205,205,1.00);
 }
 
+.board {
+	width: 50%;
+	margin: 100px auto auto;
+}
+
+.not {
+	margin:auto auto 10px auto;
+	font-size:1.8em;
+	font-family: 'Jua', sans-serif;
+}
+
 .grid {
 	-webkit-column-gap:20px;
 	-webkit-column-fill:auto;
