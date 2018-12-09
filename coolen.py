@@ -236,6 +236,11 @@ for i in range(1,10):
         if(index == 225):
             break
 
+        real_text = ''
+
+        for k in text_parser:
+            real_text = real_text + k
+
         temp = str(subject[index][1])
         if temp.replace(" ", "") and '품절' not in temp and '펑' not in temp and '종료' not in temp:
 
@@ -244,7 +249,7 @@ for i in range(1,10):
             sql1 = """insert into coolen_board(board_num, c_title, c_link, c_date, c_text) 
                           values(null,%s, %s, %s, %s)"""
 
-            curs.execute(sql1, (temp.strip(), str(link[j]), str(date_list[index]), str(text_parser[0])))
+            curs.execute(sql1, (temp.strip(), str(link[j]), str(date_list[index]), real_text))
 
 
         index = 1 + index
