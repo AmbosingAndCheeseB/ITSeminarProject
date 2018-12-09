@@ -5,9 +5,9 @@ sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳�
 github에 제공된 코드들은 python3와 php, mysql를 사용하여 만들었다.  
 운영체제 환경은 Ubuntu 16.04로 진행했다.  
 *****
-#
-#
-#
+  
+  
+  
 #### 서버 설치  
 
 
@@ -32,14 +32,14 @@ $ apt install mysql-server install
 ```sh
 $ apt install php-mysql
 ```
-#
-#
+  
+  
 *****
    
 #### 파이썬 모듈 설치  
-#
+  
  - 여기에 제공된 크롤러를 사용하려면 설치해야할 모듈들이 존재한다. 
- #
+   
 1. pip3 install  
  ```sh
 $ apt-get install python3-pip
