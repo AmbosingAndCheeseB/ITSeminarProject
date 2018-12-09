@@ -49,8 +49,19 @@ body {
 	column-break-inside:avoid;
 }
 
+.hide {
+	display: none;
+}
+
 .grid-item:hover{
 	background:rgba(128,128,128,0.60);
+}
+
+.grid-item:hover
+	.hide{
+		display:inline;
+		overflow: hidden;
+		text-overflow: clip;
 }
 
 .break {

@@ -80,6 +80,12 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $coolen[4];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($quei[2],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -100,6 +106,12 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $quei[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($quei[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -120,6 +132,12 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $pang[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($pang[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -139,10 +157,17 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $seven[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($seven[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
 			}
+		echo '</div>';
 		
 	?>
 
