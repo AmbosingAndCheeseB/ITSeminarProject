@@ -10,10 +10,14 @@ body {
 	background:#EBEBEB;
 }
 
-.not {
+.noti {
 	border: 0.7px dotted #B8B8B8;
 	font-size:1.8em;
 	font-family: 'Jua', sans-serif;
+}
+
+.noti:hover{
+	background:#B5B5B5;
 }
 
 .grid {

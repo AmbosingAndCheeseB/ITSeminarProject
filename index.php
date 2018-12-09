@@ -46,14 +46,14 @@ $result5 = $db->query($sql5);
 	<?php
 	
 	while($notice = $result5->fetch_array()){
-		echo '<div class = "not">
-			<a href="';
+		echo '<a href="';
 		echo $notice[2];
 		echo '" style="text-decoration:none" target="_blank">
+			<div class = "noti">
 			<i class="fa fa-exclamation-triangle" style = "color:#734000; margin:10px"></i>';
 		echo $notice[1];
-		echo '</a>
-			</div>';
+		echo '</div>
+			</a>';
 		}
 	
 	?>
