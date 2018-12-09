@@ -44,7 +44,7 @@ $result3 = $db->query($sql3); // jigupang db
 
 	<?php
 	
-		echo '<div style="break-after: column">';
+		echo '<div class="break">';
 		while($coolen = $result1->fetch_array()){
 			echo '
 				<a href="'; echo $coolen[2]; echo'" target = "_blank">
@@ -64,7 +64,7 @@ $result3 = $db->query($sql3); // jigupang db
 		echo '</div>';
 	
 	
-		echo '<div style="break-after: column">';
+		echo '<div class="break">';
 		while($quei = $result2->fetch_array()){
 			echo '
 				<a href="'; echo $quei[2]; echo'" target = "_blank">
@@ -84,7 +84,7 @@ $result3 = $db->query($sql3); // jigupang db
 		echo '</div>';
 	
 	
-		echo '<div style="break-after: column">';
+		echo '<div class="break">';
 		while($pang = $result3->fetch_array()){
 			echo '
 				<a href="'; echo $pang[2]; echo'" target = "_blank">
@@ -104,7 +104,7 @@ $result3 = $db->query($sql3); // jigupang db
 		echo '</div>';
 	
 	
-/*		echo '<div style="break-after: column">';
+/*		echo '<div class="break">';
 			while($assa = $result4->fetch_array()){
 			echo '
 				<a href="'; echo $assa[2]; echo'" target = "_blank">

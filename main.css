@@ -5,14 +5,10 @@ body {
 }
 
 .grid {
-	margin: 150px;
-	-webkit-column-count:1;
 	-webkit-column-gap:20px;
 	-webkit-column-fill:auto;
-	-moz-column-count:1;
 	-moz-column-gap:20px;
 	-moz-column-fill:auto;
-	column-count:1;
 	column-gap:20px;
 	column-fill:auto;
 }
@@ -30,6 +26,10 @@ body {
 
 .grid-item:hover{
 	background:rgba(128,128,128,0.60);
+}
+
+.break {
+	break-after: auto;
 }
 
 img {
@@ -50,26 +50,50 @@ hr {
 	border:1px dotted rgba(128,128,128,0.50);
 }
 
-@media (min-width: 450px) {
+@media (min-width: 200px) {
   .grid {
+	  margin: 150px 50px;
+    -webkit-column-count:1;
+	  -moz-column-count:1;
+	  column-count:1; 
+  }
+	.break {
+	break-after: auto;
+	}
+}
+
+@media (min-width: 600px) {
+  .grid {
+	  margin: 150px 50px;
     -webkit-column-count:2;
 	  -moz-column-count:2;
 	  column-count:2; 
   }
+	.break {
+	break-after: auto;
+	}
 }
 
-@media (min-width: 650px) {
+@media (min-width: 1000px) {
   .grid {
+	  margin: 150px 100px;
     -webkit-column-count:3;
 	  -moz-column-count:3;
 	  column-count:3; 
   }
+	.break {
+	break-after: auto;
+}
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1400px) {
   .grid {
+	  margin: 150px;
     -webkit-column-count:4;
 	  -moz-column-count:4;
 	  column-count:4; 
   }
+	.break {
+	break-after: column;
+	}
 }
