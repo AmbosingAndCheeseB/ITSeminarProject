@@ -12,8 +12,8 @@ $result2 = $db->query($sql2); // quasarjone db
 $sql3 = 'select * from pang_board where p_title like "%'.$search.'%"';
 $result3 = $db->query($sql3); // jigupang db
 
-//$sql4 = 'select * from assa_board';
-//$result4 = $db->query($sql4); // assajigu db
+$sql4 = 'select * from assa_board';
+$result4 = $db->query($sql4); // assajigu db
 
 ?>
 
@@ -104,7 +104,6 @@ $result3 = $db->query($sql3); // jigupang db
 		echo '</div>';
 	
 	
-/*		echo '<div class="break">';
 			while($assa = $result4->fetch_array()){
 			echo '
 				<a href="'; echo $assa[2]; echo'" target = "_blank">
@@ -113,11 +112,14 @@ $result3 = $db->query($sql3); // jigupang db
 					<p>';
 						echo $assa[1];
 			echo '	</p>
+					<hr>
+					<p style = "font-size: 1.0em; text-align : right;">';
+						echo $assa[3];
+			echo '	</p>
 				</div>
+				</a>
 				';
 			}
-		echo '</div>'; */
-		
 		
 	?>
 
