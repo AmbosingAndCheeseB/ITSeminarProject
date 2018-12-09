@@ -146,6 +146,57 @@ def date_crawler(d, text):
     return date
 pass
 
+#text parser
+class textParser(HTMLParser):
+
+    last_tag = ''
+    last_attrs = ''
+    parser_text = []
+    temp_str = ''
+
+    def __init__(self):
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.crawling_ok = False
+
+    def handle_starttag(self, tag, attrs):
+        self.last_tag = tag
+        for name, value in attrs:
+            self.last_attrs = value
+            if value == 'bo_v_con':
+                self.crawling_ok = True
+
+    def handle_data(self, data):
+
+        if  self.crawling_ok and self.last_tag == 'p':
+            self.temp_str = self.temp_str + data
+            self.temp_str = self.temp_str.strip()
+            self.temp_str = self.temp_str + " "
+
+
+    def handle_endtag(self, tag):
+        if tag == 'div':
+            self.parser_text.append(self.temp_str)
+            self.temp_str = ''
+            self.crawling_ok = False
+
+    def close(self):
+        HTMLParser.close(self)
+
+pass
+def text_crawler(s, text):
+    s.feed(text)
+    text1 = ''
+
+    for item in s.parser_text:
+        temp = str(item.strip())
+        if temp:
+            text1 = temp
+
+
+    return text1
+pass
 
 connect = pymysql.connect(host = 'localhost',port = 3306, user = 'root', password = 'Tjdduswldnjs12', db = 'ITProj', charset='utf8')
 
@@ -175,6 +226,13 @@ for i in range(1,10):
 
     for j in range(0, 25):
 
+        url = link[j]
+
+        html_result = requests.get(url)
+
+        text = textParser()
+        text_parser = text_crawler(text, html_result.text)
+
         if(index == 225):
             break
 
@@ -183,10 +241,10 @@ for i in range(1,10):
 
 
             temp = str(subject[index][1])
-            sql1 = """insert into coolen_board(board_num, c_title, c_link, c_date) 
-                          values(null,%s, %s, %s)"""
+            sql1 = """insert into coolen_board(board_num, c_title, c_link, c_date, c_text) 
+                          values(null,%s, %s, %s, %s)"""
 
-            curs.execute(sql1, (temp.strip(), str(link[j]), str(date_list[index])))
+            curs.execute(sql1, (temp.strip(), str(link[j]), str(date_list[index]), str(text_parser[0])))
 
 
         index = 1 + index

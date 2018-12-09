@@ -187,7 +187,7 @@ connect.commit()
 
 
 index = 0
-
+stop = 0
 for i in range(0, 10):
     url = "https://www.sevenzone.com/bbs/board.php?bo_table=coupon&page=" + str(i)
 
@@ -201,7 +201,7 @@ for i in range(0, 10):
     subject = subject_crawler(sub_parser, html_result.text)
     date_list = date_crawler(date_parser, html_result.text)
     link = need_href(link_parser)
-    stop = 0
+
     stop = len(subject) + stop
     for j in range(0, len(link)):
 
