@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* border-box */
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+/* Undoes normalize.css setting box-sizing to content-box */
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 50%;
+  margin: 150px auto auto;
+}
+
+.Search {
+  position: relative;
+  display: table;
+	width: 100%;
+  color: #555;
+}
+
+.Search-box {
+  width: 100%;
+  padding: 8px 20px;
+  height: 60px;
+  border: 0;
+  font-size: 30px;
+  box-shadow: 0 3px 12px -1px rgba(0, 0, 0, .3);
+}
+
+#sr{
+	border: 0;
+	outline: 0;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.Search-box:focus {
+  outline: 0;
+}
+
+.Search-label {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	font-size: 30px;
+}
