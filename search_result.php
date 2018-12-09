@@ -12,7 +12,7 @@ $result2 = $db->query($sql2); // quasarjone db
 $sql3 = 'select * from pang_board where p_title like "%'.$search.'%"';
 $result3 = $db->query($sql3); // jigupang db
 
-$sql4 = 'select * from assa_board';
+$sql4 = 'select * from assa_board where a_title like "%'.$search.'%"';
 $result4 = $db->query($sql4); // assajigu db
 
 ?>
