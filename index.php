@@ -22,9 +22,9 @@ $result4 = $db->query($sql4); // jigupang db
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div>
+<div style="text-align: center">
 	<a href="index.php">
-		<img src="sales combine.png" style="display: table; width: 60%; margin: 100px auto 0px auto">
+		<img src="sales combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
 </div>
 
