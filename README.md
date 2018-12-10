@@ -1,10 +1,10 @@
 ﻿# SALES COMBINE  
 *****
 ## Feature
-sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳에 모아 놓은 사이트다.  
-sales combine에서 크롤링한 사이트들은 시간 한정 특가인 경우와 할인 코드를 모아놓은 사이트들이 대부분이다.  
-평소에 사고 싶은 것이 있었던 사람들은 이번 기회에 직구를 통해서나 타임 세일로 저렴하게 구매해보자.    
-운영체제 환경은 Ubuntu 16.04로 진행했다.  
+sales combine은 직구 세일 정보나 하드웨어 세일 정보를 한 곳에 모아 놓은 사이트입니다.    
+sales combine에서 크롤링한 사이트들은 시간 한정 특가인 경우와 할인 코드를 모아놓은 사이트들이 대부분입니다.  
+평소에 사고 싶은 것이 있었던 사람들은 이번 기회에 직구를 통해서나 타임 세일로 저렴하게 구매해봅시다!    
+운영체제 환경은 Ubuntu 16.04로 진행했습니다.    
 *****  
   
    
@@ -90,13 +90,12 @@ $ cd phantomjs-2.1.1-linux-x86_64/bin/
 $ cp phantomjs /usr/local/bin/ 
 ```
 *****  
-## DataBase Schema  
-
-*****
 ## How to use?  
 1. 위의 설치해야할 것들을 먼저 다 설치한 후 python 문서에 대해서 수정할 것이 있습니다.  
    `pymysql.connect(host = 'localhost',port = 3306, user = 'user_name', password = 'password', db = 'db_name', charset='utf8')`  
+   `webdriver.PhantomJS('phantomjs가 있는 경로/phantomjs')`
    -- 이 내용을 자신의 데이터베이스에 맞게 수정해 주세요.
+   -- phantomjs 경로를 잘 설정하지 않으면 crontab으로 주기적인 실행할 때 오류가 발생할 수 있습니다.
 2. DB Schema를 생성하세요.
  -- 우리가 사용한 DB Schema
 
@@ -107,4 +106,25 @@ $ sh forWeb.sh
  -- 이 안에 python code들을 실행하는 Shell Script가 들어있습니다.
 4. Webpage 구성
  -- apach2/html/ <-- 이곳에 웹페이지 코드들을 넣어주세요.
-5. 
+ -- 그 외에 필요한 이미지 파일 등은 경로를 잘 설정해주세요.
+5. crontab 설정
+-- root 권한에서
+  ```sh
+$ crontab -e
+```  
+`0 */6 * * * /쉘 스크립트 경로/example.sh >> /로그를 남기고 싶은 경로/status_check.log 2>&1`
+
+-- 이 프로젝트는 6시간마다 크롤링을 다시하게 만들었습니다.  
+*****  
+  
+## Author
+ - Kim SeongYeon  
+ - Yang JiWon  
+  
+*****
+## Site
+ - http://106.10.37.140/
+ - 서버는 불안정합니다. 😭😭😭😭😭😭😭😭😭
+
+
+
