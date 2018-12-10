@@ -9,7 +9,7 @@ sales combine에서 크롤링한 사이트들은 시간 한정 특가인 경우�
 
 ## Summary
 <p align="center">
-    <img src="image/SalesCombine_Summary.png" />
+    <img src="image/SalesCombine_Summary.JPG" />
 </p>
 
 
