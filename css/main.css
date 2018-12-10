@@ -14,6 +14,14 @@ body {
 	
 }
 
+.caption {
+	position: absolute;
+	top: 20px;
+	right: 80px;
+	font-size: 1.8em;
+	font-family: 'Jua', sans-serif;
+}
+
 .board {
 	width: 50%;
 	margin: 130px auto auto;
@@ -99,6 +107,9 @@ hr {
 	.money {
 		visibility: hidden;
 	}
+	.caption {
+		visibility: hidden;
+	}
 	.noti {
 		font-size: 1.2em;
 	}
@@ -115,6 +126,9 @@ hr {
 	break-after: auto;
 	}
 	.money {
+		visibility: hidden;
+	}
+	.caption {
 		visibility: hidden;
 	}
 	.noti {
@@ -135,6 +149,9 @@ hr {
 	.money {
 		visibility: visible;
 	}
+	.caption {
+		visibility: visible;
+	}
 	.noti {
 		font-size: 1.6em;
 	}
@@ -151,6 +168,9 @@ hr {
 	break-after: column;
 	}
 	.money {
+		visibility: visible;
+	}
+	.caption {
 		visibility: visible;
 	}
 	.noti {
