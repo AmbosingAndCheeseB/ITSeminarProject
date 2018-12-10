@@ -104,7 +104,7 @@ $ cp phantomjs /usr/local/bin/
  - 우리가 사용한 DB Schema  
 
 3. python3 code를 쉘 스크립트로 실행  
- ```sh
+```sh
 $ sh forWeb.sh
 ```  
  -- 이 안에 python code들을 실행하는 Shell Script가 들어있습니다.  
@@ -117,13 +117,14 @@ $ sh forWeb.sh
 <p><br></p>
 - root 권한에서 
 <p><br></p>
-  ```sh
+```sh
 $ crontab -e
 ```
 <p><br></p>
+  
 `0 */6 * * * /쉘 스크립트 경로/example.sh >> /로그를 남기고 싶은 경로/status_check.log 2>&1`  
   
-- 이 프로젝트는 6시간마다 크롤링을 다시하게 만들었습니다.  
+- 이 프로젝트는 6시간마다 크롤링을 반복하게 만들었습니다.  
 *****  
   
 ## Author
@@ -134,4 +135,3 @@ $ crontab -e
 ## Site
  - http://106.10.37.140/
  - 서버는 불안정합니다. 😭😭😭😭😭😭😭😭😭
-
