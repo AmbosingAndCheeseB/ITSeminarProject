@@ -27,6 +27,7 @@ $result5 = $db->query($sql5);
 
 
 <div style="text-align: center">
+	<p style="position: absolute; top: 20px; right: 80px; font-size: 1.8em">환율 계산기</p>
 	<a href="index.php">
 		<img src="image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
