@@ -109,13 +109,13 @@ $ cp phantomjs /usr/local/bin/
 
   phantomjs 경로를 잘 설정하지 않으면 crontab으로 주기적인 실행할 때 오류가 발생할 수 있습니다.
 
-####
+-----
 2. DB Schema를 생성하세요.  
 
 <p><br></p>
 
   우리가 사용한 DB Schema  
-
+-----
 3. python3 code를 쉘 스크립트로 실행  
 ```sh
 $ sh forWeb.sh
@@ -123,7 +123,7 @@ $ sh forWeb.sh
 
   이 안에 python code들을 실행하는 Shell Script가 들어있습니다.  
 
-####
+-----
 
 4. Webpage 구성  
 
@@ -132,7 +132,7 @@ $ sh forWeb.sh
   apach2/html/ <-- 이곳에 웹페이지 코드들을 넣어주세요.  
 <p><br></p>
   그 외에 필요한 이미지 파일 등은 경로를 잘 설정해주세요.  
-####
+-----
 
 5. crontab 설정  
 
