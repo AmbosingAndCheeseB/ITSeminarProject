@@ -163,6 +163,14 @@ $ crontab -e
  - Yang JiWon  
   
 *****
+## Support WebPage
+ - 직구팡 https://www.pangdeals.com/  
+ - 세븐존 https://www.sevenzone.com/bbs/board.php?bo_table=coupon  
+ - 쿨엔조이 http://www.coolenjoy.net/bbs/jirum/p1?sca=PC%EA%B4%80%EB%A0%A8
+ - 퀘이사존 https://quasarzone.co.kr/bbs/board.php?bo_table=qb_saleinfo&sca=%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4
+
+
+*****
 ## Site
  - http://106.10.37.140/
  - 서버는 불안정합니다. 😭😭😭😭😭😭😭😭😭
