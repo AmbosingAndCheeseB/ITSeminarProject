@@ -91,7 +91,7 @@ $ cp phantomjs /usr/local/bin/
 ```
 *****  
 ## How to use?  
-1. 위의 설치해야할 것들을 먼저 다 설치한 후 python 문서에 대해서 수정할 것이 있습니다.  
+##### 1. 위의 설치해야할 것들을 먼저 다 설치한 후 python 문서에 대해서 수정할 것이 있습니다.  
 
 <p><br></p>
 
@@ -110,13 +110,13 @@ $ cp phantomjs /usr/local/bin/
   phantomjs 경로를 잘 설정하지 않으면 crontab으로 주기적인 실행할 때 오류가 발생할 수 있습니다.
 
 #
-2. DB Schema를 생성하세요.  
+##### 2. DB Schema를 생성하세요.  
 
 <p><br></p>
 
 우리가 사용한 DB Schema  
 #
-3. python3 code를 쉘 스크립트로 실행  
+##### 3. python3 code를 쉘 스크립트로 실행  
 ```sh
 $ sh forWeb.sh
 ```  
@@ -125,7 +125,7 @@ $ sh forWeb.sh
 
 #
 
-4. Webpage 구성  
+##### 4. Webpage 구성  
 
 <p><br></p>  
 
@@ -134,7 +134,7 @@ $ sh forWeb.sh
   그 외에 필요한 이미지 파일 등은 경로를 잘 설정해주세요.  
 #
 
-5. crontab 설정  
+##### 5. crontab 설정  
 
 <p><br></p>
 
