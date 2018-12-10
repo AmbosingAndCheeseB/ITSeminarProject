@@ -114,7 +114,12 @@ $ cp phantomjs /usr/local/bin/
 
 <p><br></p>
 
-우리가 사용한 DB Schema  
+우리가 사용한 DB Schema
+<p align="center">
+    <img src="DB Schema/DB_table.PNG" />
+</p>
+
+  
 #
 ##### 3. python3 code를 쉘 스크립트로 실행  
 ```sh
