@@ -6,6 +6,14 @@ sales combine에서 크롤링한 사이트들은 시간 한정 특가인 경우�
 평소에 사고 싶은 것이 있었던 사람들은 이번 기회에 직구를 통해서나 타임 세일로 저렴하게 구매해봅시다!    
 운영체제 환경은 Ubuntu 16.04로 진행했습니다.    
 *****  
+
+## Summary
+<p align="center">
+    <img src="image/SalesCombine_Summary.png" />
+</p>
+
+
+*****
   
    
 ## Bulit With
