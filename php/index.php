@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include "dbconfig.php";
 
 $sql1 = 'select * from coolen_board';
@@ -20,8 +20,8 @@ $result5 = $db->query($sql5);
 
 <!DOCTYPE html><head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/searchbox.css">
+    <link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/searchbox.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -29,7 +29,7 @@ $result5 = $db->query($sql5);
 <div style="text-align: center">
 	<div class="caption">환율 계산기</div>
 	<a href="index.php">
-		<img src="image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
+		<img src="../image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
 	<iframe class = "money" src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
 </div>
@@ -73,7 +73,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $coolen[3]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="image/coolenlogo.jpg">
+					<img src="../image/coolenlogo.jpg">
 					<p>';
 						echo $coolen[1];
 			echo '	</p>
@@ -99,7 +99,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $quei[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="image/quasarlogo.jpg">
+					<img src="../image/quasarlogo.jpg">
 					<p>';
 						echo $quei[1];
 			echo '	</p>
@@ -125,7 +125,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $pang[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="image/jigulogo.jpg">
+					<img src="../image/jigulogo.jpg">
 					<p>';
 						echo $pang[1];
 			echo '	</p>
@@ -150,7 +150,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $seven[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="image/sevenlogo.jpg">
+					<img src="../image/sevenlogo.jpg">
 					<p>';
 						echo $seven[1];
 			echo '	</p>
