@@ -214,7 +214,7 @@ class textParser(HTMLParser):
 
     def handle_data(self, data):
 
-        if  self.crawling_ok:
+        if  self.crawling_ok and 'http' not in data:
             self.temp_str = self.temp_str + data
             self.temp_str = self.temp_str.strip()
             self.temp_str = self.temp_str + " "

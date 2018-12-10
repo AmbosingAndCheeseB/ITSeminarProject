@@ -126,7 +126,7 @@ class textParser(HTMLParser):
 
     def handle_data(self, data):
 
-        if self.is_text:
+        if self.is_text and 'http' not in data:
             self.temp_str = self.temp_str + data
             self.temp_str = self.temp_str.strip()
             self.temp_str = self.temp_str + " "
@@ -193,7 +193,7 @@ connect.commit()
 url = "https://www.pangdeals.com"
 
 
-driver =webdriver.PhantomJS()
+driver = webdriver.PhantomJS('/usr/local/bin/phantomjs')
 driver.implicitly_wait(3)
 driver.get(url)
 time.sleep(5)
