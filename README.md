@@ -109,17 +109,18 @@ $ sh forWeb.sh
 ```  
  -- 이 안에 python code들을 실행하는 Shell Script가 들어있습니다.  
 <p><br></p>
- 4. Webpage 구성  
+ 4. Webpage 구성 
+<p><br></p>
  - apach2/html/ <-- 이곳에 웹페이지 코드들을 넣어주세요.  
+<p><br></p>
  - 그 외에 필요한 이미지 파일 등은 경로를 잘 설정해주세요.  
 <p><br></p>
  5. crontab 설정  
 <p><br></p>
-- root 권한에서 
-<p><br></p>
+- root 권한에서   
 ```sh
 $ crontab -e
-```
+```  
 <p><br></p>
   
 `0 */6 * * * /쉘 스크립트 경로/example.sh >> /로그를 남기고 싶은 경로/status_check.log 2>&1`  
@@ -135,3 +136,4 @@ $ crontab -e
 ## Site
  - http://106.10.37.140/
  - 서버는 불안정합니다. 😭😭😭😭😭😭😭😭😭
+
