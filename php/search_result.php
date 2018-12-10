@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include "dbconfig.php";
 
 $search = $_GET["search"];
@@ -22,15 +22,18 @@ $result5 = $db->query($sql5);
 
 <!DOCTYPE html><head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="searchbox.css">
+    <link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/searchbox.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+
 <div style="text-align: center">
+	<div class="caption">환율 계산기</div>
 	<a href="index.php">
-		<img src="sales combine.png" style="width: 40%; margin: 100px auto 0px auto">
+		<img src="../image/sales_combine.png" style="width: 40%; margin: 100px auto 0px auto">
 	</a>
+	<iframe class = "money" src="https://ssltools.forexprostools.com/currency-converter/index.php?from=28&to=12&force_lang=18"></iframe>
 </div>
 
 
@@ -42,6 +45,7 @@ $result5 = $db->query($sql5);
     </form>
 	
 </div>
+
 
 <div class="board">
 	
@@ -61,6 +65,7 @@ $result5 = $db->query($sql5);
 	?>
 </div>
 
+	
 <div class="grid">
 
 	<?php
@@ -68,16 +73,22 @@ $result5 = $db->query($sql5);
 		echo '<div class="break">';
 		while($coolen = $result1->fetch_array()){
 			echo '
-				<a href="'; echo $coolen[2]; echo'" target = "_blank">
+				<a href="'; echo $coolen[3]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="coolenlogo.jpg">
+					<img src="../image/coolenlogo.jpg">
 					<p>';
 						echo $coolen[1];
 			echo '	</p>
 					<hr>
 					<p style = "font-size: 1.0em; text-align : right;">';
-						echo $coolen[3];
+						echo $coolen[4];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($coolen[2],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -90,7 +101,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $quei[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="quasarlogo.jpg">
+					<img src="../image/quasarlogo.jpg">
 					<p>';
 						echo $quei[1];
 			echo '	</p>
@@ -98,6 +109,12 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $quei[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($quei[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -110,7 +127,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $pang[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="jigulogo.jpg">
+					<img src="../image/jigulogo.jpg">
 					<p>';
 						echo $pang[1];
 			echo '	</p>
@@ -118,6 +135,12 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $pang[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($pang[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
@@ -129,7 +152,7 @@ $result5 = $db->query($sql5);
 			echo '
 				<a href="'; echo $seven[2]; echo'" target = "_blank">
 				<div class="grid-item">
-					<img src="sevenlogo.jpg">
+					<img src="../image/sevenlogo.jpg">
 					<p>';
 						echo $seven[1];
 			echo '	</p>
@@ -137,10 +160,17 @@ $result5 = $db->query($sql5);
 					<p style = "font-size: 1.0em; text-align : right;">';
 						echo $seven[3];
 			echo '	</p>
+				<div class = "hide">
+					<p>';
+						echo iconv_substr($seven[4],0,60,"utf-8").'..';
+			echo ' </p>
+				</div>
+				
 				</div>
 				</a>
 				';
 			}
+		echo '</div>';
 		
 	?>
 

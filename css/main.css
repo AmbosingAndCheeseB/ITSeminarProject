@@ -5,18 +5,31 @@ body {
 }
 
 .money {
-	float: right;
+	height: 385px;
+	width: 230px;
+	position: absolute;
+	top: 60px;
+	right: 15px;
+	border: none;
+	
+}
+
+.caption {
+	position: absolute;
+	top: 20px;
+	right: 80px;
+	font-size: 1.8em;
+	font-family: 'Jua', sans-serif;
 }
 
 .board {
 	width: 50%;
-	margin: 100px auto auto;
+	margin: 130px auto auto;
 	background:#EBEBEB;
 }
 
 .noti {
 	border: 0.7px dotted #B8B8B8;
-	font-size:1.8em;
 	font-family: 'Jua', sans-serif;
 }
 
@@ -44,8 +57,19 @@ body {
 	column-break-inside:avoid;
 }
 
+.hide {
+	display: none;
+}
+
 .grid-item:hover{
 	background:rgba(128,128,128,0.60);
+}
+
+.grid-item:hover
+	.hide{
+		display:inline;
+		overflow: hidden;
+		text-overflow: clip;
 }
 
 .break {
@@ -70,9 +94,9 @@ hr {
 	border:1px dotted rgba(128,128,128,0.50);
 }
 
-@media (min-width: 200px) {
+@media (min-width: 300px) {
   .grid {
-	  margin: 150px 50px;
+	  margin: 150px 70px;
     -webkit-column-count:1;
 	  -moz-column-count:1;
 	  column-count:1; 
@@ -80,17 +104,35 @@ hr {
 	.break {
 	break-after: auto;
 	}
+	.money {
+		visibility: hidden;
+	}
+	.caption {
+		visibility: hidden;
+	}
+	.noti {
+		font-size: 1.2em;
+	}
 }
 
 @media (min-width: 600px) {
   .grid {
-	  margin: 150px 50px;
+	  margin: 150px 70px;
     -webkit-column-count:2;
 	  -moz-column-count:2;
 	  column-count:2; 
   }
 	.break {
 	break-after: auto;
+	}
+	.money {
+		visibility: hidden;
+	}
+	.caption {
+		visibility: hidden;
+	}
+	.noti {
+		font-size: 1.4em;
 	}
 }
 
@@ -103,7 +145,16 @@ hr {
   }
 	.break {
 	break-after: auto;
-}
+	}
+	.money {
+		visibility: visible;
+	}
+	.caption {
+		visibility: visible;
+	}
+	.noti {
+		font-size: 1.6em;
+	}
 }
 
 @media (min-width: 1400px) {
@@ -115,5 +166,14 @@ hr {
   }
 	.break {
 	break-after: column;
+	}
+	.money {
+		visibility: visible;
+	}
+	.caption {
+		visibility: visible;
+	}
+	.noti {
+		font-size: 1.8em;
 	}
 }
