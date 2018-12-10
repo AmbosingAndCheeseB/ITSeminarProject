@@ -93,12 +93,13 @@ $ cp phantomjs /usr/local/bin/
 ## How to use?  
 1. 위의 설치해야할 것들을 먼저 다 설치한 후 python 문서에 대해서 수정할 것이 있습니다.  
    `pymysql.connect(host = 'localhost',port = 3306, user = 'user_name', password = 'password', db = 'db_name', charset='utf8')`   
+<p><br></p>
    `webdriver.PhantomJS('phantomjs가 있는 경로/phantomjs')`  
 <p><br></p>
    - 이 내용을 자신의 데이터베이스에 맞게 수정해 주세요.  
 <p><br></p>
    - phantomjs 경로를 잘 설정하지 않으면 crontab으로 주기적인 실행할 때 오류가 발생할 수 있습니다.
-
+<p><br></p>
 2. DB Schema를 생성하세요.
  - 우리가 사용한 DB Schema  
 
@@ -106,13 +107,16 @@ $ cp phantomjs /usr/local/bin/
  ```sh
 $ sh forWeb.sh
 ```  
- -- 이 안에 python code들을 실행하는 Shell Script가 들어있습니다.  <p><br></p>
-4. Webpage 구성  
+ -- 이 안에 python code들을 실행하는 Shell Script가 들어있습니다.  
+<p><br></p>
+ 4. Webpage 구성  
  - apach2/html/ <-- 이곳에 웹페이지 코드들을 넣어주세요.  
  - 그 외에 필요한 이미지 파일 등은 경로를 잘 설정해주세요.  
 <p><br></p>
-5. crontab 설정  
-- root 권한에서  
+ 5. crontab 설정  
+<p><br></p>
+- root 권한에서 
+<p><br></p>
   ```sh
 $ crontab -e
 ```  
@@ -129,7 +133,5 @@ $ crontab -e
 ## Site
  - http://106.10.37.140/
  - 서버는 불안정합니다. 😭😭😭😭😭😭😭😭😭
-
-
 
 
