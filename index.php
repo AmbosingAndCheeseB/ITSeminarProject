@@ -82,7 +82,7 @@ $result5 = $db->query($sql5);
 			echo '	</p>
 				<div class = "hide">
 					<p>';
-						echo iconv_substr($quei[2],0,60,"utf-8").'..';
+						echo iconv_substr($coolen[2],0,60,"utf-8").'..';
 			echo ' </p>
 				</div>
 				
