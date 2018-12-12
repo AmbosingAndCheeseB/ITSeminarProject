@@ -3,7 +3,7 @@
 import requests
 from html.parser import HTMLParser
 from selenium import webdriver
-from datetime import date
+from datetime import date, datetime
 from datetime import timedelta
 import time
 import pymysql
@@ -229,6 +229,14 @@ for i in time:
         now = timedelta(days=temp)
         days = today - now
         date1.append(str(days))
+    else:
+        temp = re.findall('\d+', i)
+        temp = int(temp.pop())
+        now = datetime.now() - timedelta(minutes = temp)
+        times = str(now.hour)+":"+str(now.minute)
+        date1.append(str(times))
+
+
 
 for i in range(len(info)):
     url = link[i]
